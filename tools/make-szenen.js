@@ -7,6 +7,14 @@ const path = require('path');
 
 const OUT = path.join(__dirname, '..', 'medusa-website', 'szenen');
 
+// Motivbilder kommen aus der gemeinsamen Datenquelle der Website (js/data.js)
+const vm = require('vm');
+const DATA = (() => { const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(OUT, '..', 'js', 'data.js'), 'utf8'), ctx); return ctx.window.MEDUSA_SZENEN || []; })();
+const bildVon = (id) => (DATA.find((x) => x.id === id) || {}).bild;
+const vorschau = (src, ghost) => src
+  ? '<span class="motif motif--bild"><img class="motif__img" src="' + src + '" alt="" loading="lazy" decoding="async"></span>'
+  : '<span class="motif"><span class="motif__ghost">' + ghost + '</span><span class="motif__label">Platzhalter · Vorschaubild folgt</span></span>';
+
 const S = [
   { id: 'herkunft', b: 'Α', t: 'Herkunft', teaser: 'Drei Schwestern am Rand der Welt – nur eine von ihnen war sterblich.',
     motto: { de: '„Nur Medusa war sterblich.“', q: 'nach Apollodor, Bibliotheke 2.4.2' },
@@ -66,7 +74,7 @@ function page(s, i) {
           <span class="next__title"><span class="greek">${next.b}</span>${next.t}</span>
           <span class="next__teaser">${next.teaser}</span>
         </span>
-        <span class="next__preview" aria-hidden="true"><span class="motif"><span class="motif__ghost">${next.b}</span><span class="motif__label">Platzhalter · Vorschaubild folgt</span></span></span>
+        <span class="next__preview" aria-hidden="true">${vorschau(bildVon(next.id) && '../media/motive/' + bildVon(next.id) + '.webp', next.b)}</span>
       </a>`
     : `<a class="next__link" href="../index.html">
         <span>
@@ -74,7 +82,7 @@ function page(s, i) {
           <span class="next__title">Die Verwandlung</span>
           <span class="next__teaser">Zurück zum Scroll-Film – und alles beginnt von vorn.</span>
         </span>
-        <span class="next__preview" aria-hidden="true"><span class="motif"><span class="motif__ghost">Μ</span></span></span>
+        <span class="next__preview" aria-hidden="true">${vorschau('../media/hero/keyframes/C.webp', 'Μ')}</span>
       </a>`;
   const back = prev
     ? `<a class="next__back" href="${prev.id}.html">← Zurück: <span class="greek">${prev.b}</span> ${prev.t}</a>`
@@ -175,7 +183,12 @@ function inhalt(s) {
   const f = path.join(__dirname, 'inhalte', s.id + '.html');
   if (!fs.existsSync(f)) return (cache[s.id] = '');
   let h = fs.readFileSync(f, 'utf8');
-  h = h.replace(/<figure[\s\S]*?<\/figure>|\{\{abbnr:([\w-]+)\|([^}]+)\}\}/g, (fig, k2, t2) => {
+  h = h.replace(/<figure[\s\S]*?<\/figure>|\{\{abbnr:([\w-]+)\|([^}]+)\}\}|\{\{abbki:([^}]+)\}\}/g, (fig, k2, t2, tki) => {
+    if (tki) { // KI-Bild ohne <figure>, z. B. auf einer Bühne
+      const n = ++ABB;
+      ABB_LIST.push({ nr: n, szene: s.b + ' ' + s.t, titel: tki, key: null, ki: true, nachweis: null });
+      return '<span class="abb">Abb. ' + n + '</span>' + tki + ' · <span class="muted">KI-generiert</span>';
+    }
     if (k2) { // Abbildung ohne <figure>, z. B. Bildunterschrift auf einer Bühne
       const n = ++ABB;
       ABB_LIST.push({ nr: n, szene: s.b + ' ' + s.t, titel: t2, key: k2, ki: false, nachweis: CREDITS[k2] || null });

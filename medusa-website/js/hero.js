@@ -438,12 +438,16 @@
     const ov = document.querySelector('.overview');
     if (!ov) return;
     const bg = ov.querySelector('.overview__bg');
+    // Motive in einer bildschirmgroßen, mitlaufenden Fläche (statt auf die Listenhöhe gestreckt)
+    const stick = document.createElement('div');
+    stick.className = 'overview__sticky';
+    bg.appendChild(stick);
     const items = ov.querySelectorAll('.ov-item');
     const SZ = window.MEDUSA_SZENEN || [];
     const layers = [];
     items.forEach((li, i) => {
       const m = M.motifEl(SZ[i], 'overview__motif');
-      bg.appendChild(m);
+      stick.appendChild(m);
       layers.push(m);
     });
     const show = (i) => {

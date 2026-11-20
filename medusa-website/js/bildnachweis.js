@@ -67,6 +67,14 @@ window.MEDUSA_BILDNACHWEIS = [
  },
  {
   "nr": 5,
+  "szene": "Β Mythos",
+  "titel": "Die Rivalin: Medusa und Athena Stirn an Stirn",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 6,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Danaë und der eherne Turm, 1872",
   "key": "s3-bj-01",
@@ -85,7 +93,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 6,
+  "nr": 7,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Der Ruf des Perseus, 1877",
   "key": "s3-bj-02",
@@ -104,7 +112,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 7,
+  "nr": 8,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Perseus und die Graien, 1877–1880",
   "key": "s3-bj-03",
@@ -123,7 +131,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 8,
+  "nr": 9,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Perseus und die Meeresnymphen, 1877",
   "key": "s3-bj-04",
@@ -142,7 +150,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 9,
+  "nr": 10,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Das Auffinden der Medusa, 1882",
   "key": "s3-bj-05",
@@ -161,7 +169,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 10,
+  "nr": 11,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Der Tod der Medusa I, 1882",
   "key": "s3-bj-06",
@@ -180,7 +188,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 11,
+  "nr": 12,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Der Fels des Verhängnisses, 1885–88",
   "key": "s3-bj-07",
@@ -199,7 +207,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 12,
+  "nr": 13,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Das erfüllte Verhängnis, 1885–88",
   "key": "s3-bj-08",
@@ -218,7 +226,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 13,
+  "nr": 14,
   "szene": "Γ Perseus",
   "titel": "Burne-Jones, Das unheilvolle Haupt, 1885–88",
   "key": "s3-bj-09",
@@ -237,15 +245,15 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 14,
+  "nr": 15,
   "szene": "Γ Perseus",
-  "titel": "Die Ausrüstung",
+  "titel": "Medusa schläft zwischen ihren Schwestern",
   "key": null,
   "ki": true,
   "nachweis": null
  },
  {
-  "nr": 15,
+  "nr": 16,
   "szene": "Δ Schutzzeichen",
   "titel": "Gorgo vom Westgiebel des Artemis-Tempels, Korfu, Archäologisches Museum",
   "key": "s4-korfu",
@@ -264,7 +272,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 16,
+  "nr": 17,
   "szene": "Δ Schutzzeichen",
   "titel": "Stirnziegel mit Medusenkopf, Tarent, Metropolitan Museum, New York",
   "key": "s4-uebergang",
@@ -283,7 +291,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 17,
+  "nr": 18,
   "szene": "Δ Schutzzeichen",
   "titel": "Medusa Rondanini, Marmor, Glyptothek München (Inv. 252)",
   "key": "s4-rondanini2",
@@ -302,7 +310,7 @@ window.MEDUSA_BILDNACHWEIS = [
   }
  },
  {
-  "nr": 18,
+  "nr": 19,
   "szene": "Δ Schutzzeichen",
   "titel": "Gorgo-Giebel von Korfu",
   "key": "s4-korfu",

@@ -254,6 +254,13 @@ html::after {
   font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(201,164,106,.75);
   border: 1px dashed rgba(201,164,106,.45); padding: 4px 10px;
 }
+/* Echtes Motivbild: füllt die Fläche, Schrift davor bleibt durch die Abdunklung links lesbar */
+.motif--bild { background: var(--nacht); overflow: hidden; }
+.motif__img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 70% 50%; }
+.menu__motif.motif--bild::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(13,15,14,.92) 0%, rgba(13,15,14,.7) 45%, rgba(13,15,14,.15) 100%);
+}
 
 /* ---------- Seitenübergang: Lichtnaht ----------
    Gleiche Bildsprache wie der Ladebildschirm: Zwei dunkle Flächen schließen sich zur Mitte,
@@ -451,8 +458,10 @@ html::after {
 .page-home .site-header.is-hero .logo img { opacity: 0; }
 
 /* ---------- Szenen-Übersicht ---------- */
-.overview { position: relative; z-index: 1; padding: calc(var(--s7) + var(--header-h)) 0 var(--s7); overflow: hidden; isolation: isolate; }
+.overview { position: relative; z-index: 1; padding: calc(var(--s7) + var(--header-h)) 0 var(--s7); overflow: hidden; overflow: clip; isolation: isolate; }
 .overview__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+/* Motiv bleibt bildschirmgroß stehen, während die Liste darüber scrollt (statt auf die Listenhöhe gestreckt zu werden) */
+.overview__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .overview__motif { position: absolute; inset: 0; opacity: 0; transform: scale(1.06); }
 .overview__motif::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,15,14,.92) 0%, rgba(13,15,14,.55) 60%, rgba(13,15,14,.75) 100%); }
 .overview__head { padding: 0 var(--gutter); margin-bottom: var(--s6); display: grid; gap: var(--s3); max-width: 1400px; }

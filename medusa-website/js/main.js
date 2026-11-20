@@ -62,6 +62,12 @@
     const d = document.createElement('div');
     d.className = 'motif ' + (cls || '');
     d.dataset.motiv = s ? s.motiv : '';
+    if (s && s.bild) {
+      // echtes Motivbild (media/motive/<bild>.webp); lädt erst, wenn es gebraucht wird
+      d.classList.add('motif--bild');
+      d.innerHTML = '<img class="motif__img" src="' + base + 'media/motive/' + s.bild + '.webp" alt="" loading="lazy" decoding="async">';
+      return d;
+    }
     d.innerHTML = '<span class="motif__ghost">' + (s ? s.b : 'Μ') + '</span>' +
       '<span class="motif__label">Platzhalter · Motiv ' + (s ? s.motiv : '') + ' folgt</span>';
     return d;

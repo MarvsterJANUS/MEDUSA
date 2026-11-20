@@ -13,3 +13,6 @@ desktop.ini
 # KI-Rohdateien im Hauptordner (aufbereitete Fassungen liegen in medusa-website/media)
 /*.mp4
 /exec-*.png
+
+# KI-Rohbilder und -videos (aufbereitete Fassungen liegen in medusa-website/media)
+ki-bilder/
