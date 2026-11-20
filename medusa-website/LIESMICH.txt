@@ -1,0 +1,17 @@
+MEDUSA – digitale Ausstellung
+=============================
+
+Öffnen: Doppelklick auf index.html (funktioniert ohne Internet).
+Empfohlen: aktueller Chrome, Edge oder Firefox.
+
+Bedienung
+- Startseite: Scrollen spult den Film vor und zurück.
+- Oben rechts „Menü“: alle neun Szenen Α–Ω.
+- Am Ende jeder Szene führt „Weiter“ zur nächsten.
+- Esc schließt das Menü.
+
+Hinweis: Mit der Systemeinstellung „Bewegung reduzieren“ werden
+alle Animationen abgeschaltet; die Inhalte bleiben vollständig lesbar.
+
+Die Startseiten-Bilder und der Film sind KI-generiert.
+Quellen und Bildnachweis stehen im Abspann der Szene Ω (Fazit).

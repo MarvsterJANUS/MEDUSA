@@ -1,0 +1,16 @@
+/* Druckansicht – Grundgerüst. Vollständiger PDF-Export folgt in Session 4. */
+@page { size: A4 portrait; margin: 20mm; }
+html, body { background: #E8E4DC !important; color: #0D0F0E !important; }
+.site-header, .menu, .progress-snake, .cursor, .grain, .vignette, .loader, .transition,
+.hero__canvas, .hero__dust, .hero__flash, .hero__shield, .hero__hint, .hero__beam, .hero__shade, .skip-link { display: none !important; }
+.hero, .hero__stage { height: auto !important; background: none !important; }
+.hero__static { display: block !important; position: static !important; width: 100%; height: auto; }
+.hero__teaser-list { display: block !important; }
+.hero__teasers, .overview__bg { display: none !important; }
+.hero__intro, .hero__motto { position: static !important; opacity: 1 !important; transform: none !important; visibility: visible !important; }
+.hero__word { color: #0D0F0E !important; background: none !important; -webkit-text-fill-color: #0D0F0E; filter: none !important; font-size: 72pt !important; }
+* { opacity: 1 !important; visibility: visible !important; }
+a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+.scene-title { min-height: 0 !important; page-break-before: always; }
+img { page-break-inside: avoid; }
+.namefield input { border-bottom: 1px solid #0D0F0E !important; color: #0D0F0E !important; }

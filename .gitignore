@@ -1,0 +1,11 @@
+# Abhängigkeiten (neu installieren mit: npm install)
+node_modules/
+
+# Roh-Assets (Clips, After-Effects-Projekte) – bleiben lokal
+assets/
+*.aep
+
+# System
+Thumbs.db
+desktop.ini
+.DS_Store
