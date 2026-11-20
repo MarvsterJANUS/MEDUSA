@@ -383,5 +383,24 @@ window.MEDUSA_BILDNACHWEIS = [
   "key": null,
   "ki": true,
   "nachweis": null
+ },
+ {
+  "nr": 27,
+  "szene": "Ζ Literatur",
+  "titel": "Gustave Doré, Die Furien",
+  "key": "s6-dore",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Inferno Canto 9 verse 46.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Inferno_Canto_9_verse_46.jpg",
+   "titel": "Gustave Doré, Inferno, Canto IX, Vers 46 (Die Furien)",
+   "kuenstler": "Gustave Doré",
+   "datum": "um 1857–1861",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "Illustration zu Dantes Inferno",
+   "breite": 699,
+   "hoehe": 1064
+  }
  }
 ];

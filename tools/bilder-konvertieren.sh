@@ -12,8 +12,10 @@ for i in 01 02 03 04 05 06 07 08 09; do w s3-bj-$i "scale='min(1400,iw)':-2" s3-
 w s1-gorgonen-vase "crop=iw*0.346:iw*0.346:iw*0.324:ih*0.372,scale=1200:-2" s1-gorgonen-vase
 # Β: Gorgo (Hesiod), Caravaggio + Stein-Fassung
 w s2-gorgo-archaisch "crop=ih:ih:iw*0.1166:0,scale=1400:-2" s2-gorgo-archaisch 70
-w f-caravaggio "scale=1400:-2" f-caravaggio
-w f-caravaggio "scale=1400:-2,hue=s=0,eq=contrast=1.12:brightness=0.02:gamma=1.05,colorbalance=rs=-.03:bs=.03:rm=-.02:bm=.02" f-caravaggio-stein
+# rund freigestellt (Schild ohne grauen Hintergrund), Farb- und Stein-Fassung deckungsgleich
+RUND="crop=1320:1320:38:26,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*clip((650-hypot(X-660.5,Y-660))/2.5,0,1)',scale=1200:1200:flags=lanczos"
+w f-caravaggio "scale=1400:-2,$RUND" f-caravaggio 85
+w f-caravaggio "scale=1400:-2,hue=s=0,eq=contrast=1.12:brightness=0.02:gamma=1.05,colorbalance=rs=-.03:bs=.03:rm=-.02:bm=.02,$RUND" f-caravaggio-stein 85
 # Δ: drei Gesichter, Augen jeweils auf 42 % Höhe, quadratisch
 w s4-korfu "crop=iw*0.28:iw*0.28:iw*0.3677:0,scale=1200:-2" s4-gesicht-1
 w s4-uebergang "crop=iw*0.654:iw*0.654:iw*0.143:ih*0.068,scale=1200:-2" s4-gesicht-2
@@ -21,3 +23,5 @@ w s4-rondanini2 "crop=iw*0.814:iw*0.814:iw*0.0625:ih*0.0918,scale=1200:-2" s4-ge
 w s4-korfu-giebel "scale=1920:-2" s4-korfu-giebel
 w s4-korfu "scale=1600:-2" s4-korfu
 w s4-uebergang "scale=1400:-2" s4-uebergang
+# Ζ: Doré, Inferno IX (Furien) – Bildunterschrift abgeschnitten, warm abgedunkelt
+w s6-dore "crop=676:960:12:10,eq=gamma=0.82:contrast=1.12:brightness=-0.05,colorchannelmixer=rr=1.0:gg=0.93:bb=0.80,vignette=angle=PI/4.2" s6-dore 86

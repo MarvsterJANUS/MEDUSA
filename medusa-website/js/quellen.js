@@ -55,5 +55,23 @@ window.MEDUSA_QUELLEN = {
   'wiki-complex':      { gruppe: 'web', text: 'Wikipedia: Medusa complex (Gaston Bachelard)', url: 'https://en.wikipedia.org/wiki/Medusa_complex' },
   'wiki-myrina':       { gruppe: 'web', text: 'Wikipedia: Myrina (Amazon) – nach Diodor', url: 'https://en.wikipedia.org/wiki/Myrina_(Amazon)' },
   'insidestory':       { gruppe: 'web', text: 'Inside Story: Mary Beard, „Women & Power“ (2017)', url: 'https://insidestory.org.au/?p=46369' },
-  'prospect':          { gruppe: 'web', text: 'Prospect Magazine: Why do we still depict Medusa as a monster?', url: 'https://prospectmagazine.co.uk/society/39609/why-do-we-still-depict-medusa-as-a-monster' }
+  'prospect':          { gruppe: 'web', text: 'Prospect Magazine: Why do we still depict Medusa as a monster?', url: 'https://prospectmagazine.co.uk/society/39609/why-do-we-still-depict-medusa-as-a-monster' },
+
+  // Ζ Literatur
+  'dante-wikisource':  { gruppe: 'antike', text: 'Dante Alighieri: Divina Commedia, Inferno, Canto IX (italienischer Text, Wikisource)', url: 'https://it.wikisource.org/wiki/Divina_Commedia/Inferno/Canto_IX' },
+  'goethe-faust':      { gruppe: 'antike', text: 'Johann Wolfgang von Goethe: Faust. Eine Tragödie, Walpurgisnacht (Projekt Gutenberg)', url: 'https://projekt-gutenberg.org/authors/johann-wolfgang-von-goethe/books/faust-eine-tragoedie/chapter/25' },
+  'shelley-poets':     { gruppe: 'antike', text: 'Percy Bysshe Shelley: On the Medusa of Leonardo da Vinci in the Florentine Gallery, 1819 (poets.org)', url: 'https://poets.org/poem/medusa-leonardo-da-vinci-florentine-gallery' },
+  'uw-homer':          { gruppe: 'fach', text: 'University of Washington: Gorgonen bei Homer (ResearchWorks, PDF)', url: 'https://digital.lib.washington.edu/researchworks/bitstreams/925aa792-fee2-4094-9cf0-560ea265951f/download' },
+  'yale-dante':        { gruppe: 'fach', text: 'Yale Open Courses: Dante in Translation, Inferno IX', url: 'https://oyc.yale.edu/node/1430' },
+  'sahlberg':          { gruppe: 'fach', text: 'Sahlberg, Oskar: Medusa-Motive bei Goethe (Pränatale Psychologie, PDF)', url: 'https://mattes.de/buecher/praenatale_psychologie/PP_PDF/PP_13_1-2_Sahlberg.pdf' },
+  'ucl-shelley':       { gruppe: 'fach', text: 'Nabugodi, Mathelinda: Medusan Figures (UCL Discovery, PDF)', url: 'https://discovery.ucl.ac.uk/id/eprint/10180035/1/Nabugodi%20Medusan%20Figures.pdf' },
+  'camws':             { gruppe: 'fach', text: 'CAMWS 2010: Lucan, Pharsalia IX (Abstract)', url: 'https://camws.org/meeting/2010/program/abstracts/12D4.Brinnehl.pdf' },
+  'circa':             { gruppe: 'fach', text: 'Circa Theatre: Programmheft zu Medusa (PDF)', url: 'https://www.circa.co.nz/wp-content/uploads/2018/09/Final-Print-1.pdf' },
+  'bestiary':          { gruppe: 'web', text: 'The Medieval Bestiary: Lucan, Pharsalia', url: 'https://bestiary.ca/prisources/psdetail964.htm' },
+  'dantebook':         { gruppe: 'web', text: 'Dante Book Club: Medusa and the mind – what Dante’s Furies mean', url: 'https://armenikus.substack.com/p/medusa-and-the-mind-what-dantes-furies' },
+  'wiki-stoneblind':   { gruppe: 'web', text: 'Wikipedia: Stone Blind (Natalie Haynes)', url: 'https://en.wikipedia.org/wiki/Stone_Blind' },
+  'goodreads-burton':  { gruppe: 'web', text: 'Goodreads: Jessie Burton’s feminist Medusa', url: 'https://www.goodreads.com/author_blog_posts/24318420-jessie-burton-s-feminist-medusa-flips-the-script-on-an-ancient-greek-myt' },
+  'readingthepast':    { gruppe: 'web', text: 'Reading the Past: A monster reenvisioned (2023)', url: 'https://readingthepast.blogspot.com/2023/02/a-monster-reenvisioned-natalie-haynes.html' },
+  'litcharts':         { gruppe: 'web', text: 'LitCharts: The Lightning Thief, Chapter 11', url: 'https://litcharts.com/lit/the-lightning-thief/chapter-11' },
+  'sparknotes':        { gruppe: 'web', text: 'SparkNotes: The Lightning Thief, Section 5', url: 'https://www.sparknotes.com/lit/lightning-thief/section5/' }
 };
