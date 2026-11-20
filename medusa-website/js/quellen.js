@@ -38,5 +38,22 @@ window.MEDUSA_QUELLEN = {
   'stephens':          { gruppe: 'web', text: 'Stephens College: Art History Glossary – Gorgoneion', url: 'https://blog.stephens.edu/arh101glossary/?p=2272' },
   'gtp':               { gruppe: 'web', text: 'GTP: Archaeological Museum of Corfu', url: 'https://www.gtp.gr/TDirectoryDetails.asp?id=4318' },
   'ancientgreece':     { gruppe: 'web', text: 'ancient-greece.org: Gorgon-Giebel von Korfu', url: 'https://ancient-greece.org/?p=11758' },
-  'adac':              { gruppe: 'web', text: 'ADAC Maps: Archäologisches Museum Korfu', url: 'https://maps.adac.de/poi/archaeologisches-museum-korfu' }
+  'adac':              { gruppe: 'web', text: 'ADAC Maps: Archäologisches Museum Korfu', url: 'https://maps.adac.de/poi/archaeologisches-museum-korfu' },
+
+  // Ε Deutungen
+  'pausanias':         { gruppe: 'antike', text: 'Pausanias: Beschreibung Griechenlands 2.21.5–6 (Perseids-Ausgabe)', url: 'https://cts.perseids.org/read/greekLit/tlg0525/tlg001/perseus-eng2/2.20.9-2.21.6' },
+  'chs-vernant':       { gruppe: 'fach', text: 'Center for Hellenic Studies, Harvard: Homeric flowers and the monstrousness of death (zu J.-P. Vernant, „La mort dans les yeux“, 1985)', url: 'https://www-current.chs.harvard.edu/chapter/9-homeric-flowers-and-the-monstrousness-of-death' },
+  'olalquiaga':        { gruppe: 'fach', text: 'Olalquiaga, Celeste: Studie zur Gorgo und zum Gorgoneion (PDF)', url: 'https://www.celesteolalquiaga.com/_files/ugd/514c6b_e733e577dde84b0ba9e63203a40af741.pdf' },
+  'toyama':            { gruppe: 'fach', text: 'Toyama: Sartre, Laing und der Blick der Medusa (PDF, dLib)', url: 'https://dlib.si/stream/URN:NBN:SI:DOC-6FEB21UQ/6be9b71f-b9cb-47a9-9be5-f3e9739102a2/PDF' },
+  'proquest-freud':    { gruppe: 'fach', text: 'ProQuest: Freuds „Das Medusenhaupt“ (Notiz 1922, gedruckt 1940)', url: 'https://www.proquest.com/docview/219709411' },
+  'orlando-cixous':    { gruppe: 'fach', text: 'Orlando, Cambridge University Press: Hélène Cixous', url: 'https://orlando.cambridge.org/index.php/profiles/cixohe' },
+  'visittuscany':      { gruppe: 'web', text: 'Visit Tuscany: Die Medusa von Caravaggio', url: 'https://www.visittuscany.com/de/attraktionen/die-medusa-von-caravaggio/' },
+  'artpop':            { gruppe: 'web', text: 'Art and Popular Culture: Medusa’s Head (Freud)', url: 'https://artandpopularculture.com/Medusa%27s_Head' },
+  'cavacopedia':       { gruppe: 'web', text: 'Cavacopedia: Medusa’s Head', url: 'https://cavac.at/cavacopedia/Medusa%27s%20Head' },
+  'wiki-laugh':        { gruppe: 'web', text: 'Wikipedia: The Laugh of the Medusa', url: 'https://en.wikipedia.org/wiki/The_Laugh_of_the_Medusa' },
+  'philoeggs':         { gruppe: 'web', text: 'Philosophical Eggs: Sartre und der Blick', url: 'https://philosophicaleggs.com/?p=4572' },
+  'wiki-complex':      { gruppe: 'web', text: 'Wikipedia: Medusa complex (Gaston Bachelard)', url: 'https://en.wikipedia.org/wiki/Medusa_complex' },
+  'wiki-myrina':       { gruppe: 'web', text: 'Wikipedia: Myrina (Amazon) – nach Diodor', url: 'https://en.wikipedia.org/wiki/Myrina_(Amazon)' },
+  'insidestory':       { gruppe: 'web', text: 'Inside Story: Mary Beard, „Women & Power“ (2017)', url: 'https://insidestory.org.au/?p=46369' },
+  'prospect':          { gruppe: 'web', text: 'Prospect Magazine: Why do we still depict Medusa as a monster?', url: 'https://prospectmagazine.co.uk/society/39609/why-do-we-still-depict-medusa-as-a-monster' }
 };

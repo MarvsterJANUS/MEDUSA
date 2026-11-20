@@ -327,5 +327,61 @@ window.MEDUSA_BILDNACHWEIS = [
    "breite": 2608,
    "hoehe": 1952
   }
+ },
+ {
+  "nr": 20,
+  "szene": "Ε Deutungen",
+  "titel": "Das Tor mit dem Gorgonenhaupt",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 21,
+  "szene": "Ε Deutungen",
+  "titel": "Die verwundete Statue",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 22,
+  "szene": "Ε Deutungen",
+  "titel": "Der Held am Rand der Welt",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 23,
+  "szene": "Ε Deutungen",
+  "titel": "Der Spiegel, der zurückschaut",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 24,
+  "szene": "Ε Deutungen",
+  "titel": "Die Couch in Wien",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 25,
+  "szene": "Ε Deutungen",
+  "titel": "Die lachende Medusa",
+  "key": null,
+  "ki": true,
+  "nachweis": null
+ },
+ {
+  "nr": 26,
+  "szene": "Ε Deutungen",
+  "titel": "Die Stele ohne Gesicht",
+  "key": null,
+  "ki": true,
+  "nachweis": null
  }
 ];
