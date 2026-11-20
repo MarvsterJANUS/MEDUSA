@@ -321,15 +321,14 @@
     // Phase 2: „MEDUSA“ blendet aus
     tl.to(introEl, { autoAlpha: 0, yPercent: -12, duration: 4.5, ease: 'power2.in' }, 8);
 
-    stage.querySelectorAll('.teaser').forEach((el) => {
-      const a = parseFloat(el.dataset.in), b = parseFloat(el.dataset.out);
+    teasers.forEach(({ el, a, b }) => {
       const split = new SplitText(el.querySelector('.teaser__text'), { type: 'lines', mask: 'lines', linesClass: 'line' });
-      const ref = el.querySelector('.teaser__ref');
-      tl.set(el, { visibility: 'visible' }, a - 0.01);
+      const cta = el.querySelector('.hero-btns');
       tl.fromTo(split.lines, { yPercent: 115 }, { yPercent: 0, duration: 2.2, stagger: 0.45, ease: 'power3.out' }, a);
-      if (ref) tl.fromTo(ref, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.6, ease: 'power2.out' }, a + 0.3);
+      if (cta) tl.fromTo(cta, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.6, ease: 'power2.out' }, a + 0.6);
       tl.to(el, { opacity: 0, y: -28, duration: 1.5, ease: 'power2.in' }, b);
-      tl.set(el, { visibility: 'hidden' }, b + 1.5);
+      // sichtbar im Sinne der Tastatur: Knöpfe bleiben fokussierbar, der Text ist per Maske verborgen
+      gsap.set(el, { visibility: 'visible' });
     });
 
     // Phase 7: Film blendet aus, Kopfleiste + Schlange blenden ein
@@ -342,8 +341,42 @@
     return tl;
   }
 
+  /* ---------- Kapitel-Buttons im Film ---------- */
+  let teasers = [];
+  function collectTeasers() {
+    teasers = Array.from(stage.querySelectorAll('.teaser')).map((el) => ({ el, a: parseFloat(el.dataset.in), b: parseFloat(el.dataset.out) }));
+  }
+
+  // Klickbar nur, solange der Abschnitt zu sehen ist
+  function updateLive() {
+    const pc = progress * 100;
+    for (const t of teasers) t.el.classList.toggle('is-live', pc >= t.a + 1 && pc <= t.b + 0.4);
+  }
+
+  // Scroll-Anteil (0–100) → Scrollposition in px
+  const pctToY = (pc) => st.start + (pc / 100) * (st.end - st.start);
+
+  // Tastatur: Wer per Tab auf einen Knopf springt, bekommt den Film an die passende Stelle gespult
+  function initTeaserFocus() {
+    teasers.forEach((t) => {
+      t.el.addEventListener('focusin', () => {
+        if (!st) return;
+        const pc = progress * 100;
+        if (pc >= t.a + 2.6 && pc <= t.b) return;
+        M.scrollTo(pctToY(Math.min(t.a + 3.2, t.b - 0.3)), { duration: 0.9 });
+      });
+    });
+    introEl.addEventListener('focusin', () => {
+      if (st && progress > 0.05) M.scrollTo(pctToY(0), { duration: 0.9 });
+    });
+  }
+
   /* ---------- Intro nach dem Laden ---------- */
-  function introAnim() {
+  function introAnim(restored) {
+    if (restored) {
+      // Zurück aus einer Szene: der Film steht schon an der alten Stelle, nur das Bild blendet ein
+      return gsap.fromTo(canvas, { opacity: 0 }, { opacity: 1, duration: 1.2, ease: 'power2.out' });
+    }
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.fromTo(canvas, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 2.4, ease: 'power2.out' }, 0)
       .fromTo(wordEl, { yPercent: 105 }, { yPercent: 0, duration: 1.7, ease: 'power4.out' }, 0.35)
@@ -453,6 +486,7 @@
     shieldEl = stage.querySelector('.hero__shield');
     header = document.querySelector('.site-header');
     logoImg = header.querySelector('.logo img');
+    collectTeasers();
 
     initOverview();
 
@@ -474,9 +508,19 @@
     makeSprite();
     resize();
 
-    // Laden: zuerst Bild 1–40, dann der Rest im Hintergrund
-    const first = Array.from({ length: 40 }, (_, i) => i);
-    const rest = Array.from({ length: FRAMES - 40 }, (_, i) => i + 40);
+    // „Zurück“ aus einer Szene: Film an derselben Stelle wie vorher (Position beim Verlassen gemerkt)
+    let restoreY = 0;
+    try {
+      const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      if (nav && nav.type === 'back_forward') restoreY = parseInt(sessionStorage.getItem('medusa-home-y'), 10) || 0;
+    } catch (e) { /* ohne Speicher: Start oben */ }
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    const restoreFrame = restoreY ? Math.round(progressToFrame(clamp(restoreY / (window.innerHeight * PIN_VH), 0, 1))) : 0;
+
+    // Laden: zuerst die 40 Bilder um die Startstelle (normal: Bild 1–40), dann der Rest im Hintergrund
+    const order = Array.from({ length: FRAMES }, (_, i) => i).sort((x, y) => Math.abs(x - restoreFrame) - Math.abs(y - restoreFrame) || x - y);
+    const first = order.slice(0, 40);
+    const rest = order.slice(40);
     const firstDone = loadQueue(first, 6, () => { loadedFirst++; });
     firstDone.then(() => loadQueue(rest, 4));
 
@@ -506,6 +550,11 @@
     ScrollTrigger.addEventListener('refreshInit', tuck);
 
     opts.fonts.then(() => {
+      if (restoreY) {
+        // Intro-Elemente im Endzustand, damit die Zeitleiste sie beim Zurückscrollen richtig zeigt
+        gsap.set(wordEl, { yPercent: 0 });
+        gsap.set([stage.querySelector('.hero__greek'), stage.querySelector('.hero__sub'), stage.querySelector('.hero__hint')].concat(Array.from(stage.querySelectorAll('.hero__motto > *'))), { opacity: 1 });
+      }
       const tl = buildTimeline();
       ScrollTrigger.config({ ignoreMobileResize: true });
       st = ScrollTrigger.create({
@@ -522,24 +571,33 @@
           progress = self.progress;
           frameF = progressToFrame(progress);
           updateShield();
+          updateLive();
         },
         onRefresh: (self) => {
           progress = self.progress;
           frameF = progressToFrame(progress);
+          updateLive();
           M.headerHideAfter = self.end + window.innerHeight * 0.6;
         }
       });
+      initTeaserFocus();
       ScrollTrigger.addEventListener('refreshInit', () => { gsap.set(parallaxEl, { x: 0, y: 0 }); });
       ScrollTrigger.addEventListener('refresh', resize);
       gsap.ticker.add(tick);
       M.initReveals && M.initReveals();
       ScrollTrigger.refresh();
 
+      if (restoreY) {
+        window.scrollTo(0, restoreY);
+        if (M.lenis) M.lenis.scrollTo(restoreY, { immediate: true, force: true });
+        ScrollTrigger.update();
+      }
+
       // Ladebildschirm (nicht beim Zurückkommen über einen Seitenübergang)
       const ready = fromTransition
         ? firstDone.then(() => opts.revealPage())
         : runLoader(false);
-      ready.then(introAnim);
+      ready.then(() => introAnim(!!restoreY));
     });
   }
 

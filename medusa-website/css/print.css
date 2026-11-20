@@ -1,7 +1,8 @@
 /* Druckansicht – Grundgerüst. Vollständiger PDF-Export folgt in Session 4. */
 @page { size: A4 portrait; margin: 20mm; }
 html, body { background: #E8E4DC !important; color: #0D0F0E !important; }
-.site-header, .menu, .progress-snake, .cursor, .grain, .vignette, .loader, .transition,
+html::before, html::after,
+.site-header, .menu, .progress-snake, .cursor, .loader, .transition,
 .hero__canvas, .hero__dust, .hero__flash, .hero__shield, .hero__hint, .hero__beam, .hero__shade, .skip-link { display: none !important; }
 .hero, .hero__stage { height: auto !important; background: none !important; }
 .hero__static { display: block !important; position: static !important; width: 100%; height: auto; }

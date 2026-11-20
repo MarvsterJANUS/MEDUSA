@@ -34,36 +34,7 @@
 
   const scrollY = () => (lenis ? lenis.scroll : window.scrollY);
 
-  /* ---------- Filmkorn ---------- */
-  function initGrain() {
-    const el = document.createElement('div');
-    el.className = 'grain';
-    el.setAttribute('aria-hidden', 'true');
-    const c = document.createElement('canvas');
-    c.width = c.height = 180;
-    const ctx = c.getContext('2d');
-    const img = ctx.createImageData(180, 180);
-    for (let i = 0; i < img.data.length; i += 4) {
-      const v = Math.random() * 255;
-      img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
-      img.data[i + 3] = 255;
-    }
-    ctx.putImageData(img, 0, 0);
-    el.style.backgroundImage = 'url(' + c.toDataURL('image/png') + ')';
-    body.appendChild(el);
-
-    const vig = document.createElement('div');
-    vig.className = 'vignette';
-    vig.setAttribute('aria-hidden', 'true');
-    body.appendChild(vig);
-
-    if (reduced) return;
-    let n = 0;
-    gsap.ticker.add(() => {
-      if (++n % 4) return; // ca. 15 Bilder pro Sekunde – wie echtes Korn
-      el.style.transform = 'translate(' + (Math.random() * 10 - 5).toFixed(2) + '%,' + (Math.random() * 10 - 5).toFixed(2) + '%)';
-    });
-  }
+  /* ---------- Filmkorn + Vignette: reines CSS (html::before / ::after in style.css) ---------- */
 
   /* ---------- Cursor: goldener Ring mit Verzögerung ---------- */
   function initCursor() {
@@ -181,6 +152,12 @@
     menuBtn.setAttribute('aria-controls', 'menu');
     menuBtn.setAttribute('aria-expanded', 'false');
     menuBtn.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
+    // weitere Knöpfe, die das Menü öffnen (z. B. „Alle Kapitel“ im Scroll-Film)
+    document.querySelectorAll('[data-open-menu]').forEach((b) => {
+      b.setAttribute('aria-controls', 'menu');
+      b.setAttribute('aria-haspopup', 'dialog');
+      b.addEventListener('click', () => openMenu(b));
+    });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) closeMenu(); });
   }
 
@@ -188,9 +165,11 @@
     document.querySelectorAll('main, .site-footer, .hero').forEach((el) => { el.inert = on; });
   }
 
-  function openMenu() {
+  let menuOpener = null;
+  function openMenu(opener) {
     if (menuOpen) return;
     menuOpen = true;
+    menuOpener = opener && opener.nodeType === 1 ? opener : null;
     setHeaderHidden(false);
     header.classList.add('menu-open');
     menu.hidden = false;
@@ -218,9 +197,13 @@
     const done = () => { menu.hidden = true; header.classList.remove('menu-open'); if (lenis) lenis.start(); };
     if (instant || reduced) { gsap.set(menu, { opacity: 0 }); done(); }
     else gsap.to(menu, { opacity: 0, duration: 0.45, ease: 'power2.inOut', onComplete: done });
-    menuBtn.focus({ preventScroll: true });
+    // Fokus zurück an den Knopf, der das Menü geöffnet hat (falls er noch sichtbar ist)
+    const back = menuOpener && menuOpener.offsetParent !== null && getComputedStyle(menuOpener).visibility !== 'hidden' ? menuOpener : menuBtn;
+    menuOpener = null;
+    back.focus({ preventScroll: true });
   }
   M.closeMenu = closeMenu;
+  M.openMenu = openMenu;
 
   /* ---------- Fortschritts-Schlange ---------- */
   let snake = null;
@@ -274,18 +257,33 @@
   }
 
   /* ---------- Seitenübergänge (ohne Fetch – funktioniert per Doppelklick offline) ---------- */
+  /* Lichtnaht: Zwei dunkle Flächen schließen sich zur Mitte, ein goldener Strahl leuchtet an
+     der Naht auf. Die neue Seite wartet darunter, bis Schriften und Bilder geladen sind; dann
+     flammt der Strahl auf und die Flächen fahren auseinander (wie beim Ladebildschirm). */
+  /* Szene → Szene: „Der Buchstabe führt weiter“ (siehe navigate / revealPage, Art 'buchstabe'). */
   let leaving = false;
-  let trEl, wave;
+  let trEl, panL, panR, beam, dark, letter;
+  const isLetter = html.classList.contains('tr-buchstabe');
   function initTransition() {
     trEl = document.querySelector('.transition');
     if (!trEl) {
       trEl = document.createElement('div');
       trEl.className = 'transition';
       trEl.setAttribute('aria-hidden', 'true');
-      trEl.innerHTML = '<div class="transition__wave"><div class="transition__smoke"></div></div>';
+      trEl.innerHTML = '<div class="transition__panel transition__panel--l"></div><div class="transition__panel transition__panel--r"></div><div class="transition__beam"></div>';
       body.appendChild(trEl);
     }
-    wave = trEl.querySelector('.transition__wave');
+    panL = trEl.querySelector('.transition__panel--l');
+    panR = trEl.querySelector('.transition__panel--r');
+    beam = trEl.querySelector('.transition__beam');
+    dark = trEl.querySelector('.transition__dark');
+    letter = trEl.querySelector('.transition__letter');
+    // CSS-Startlage als xPercent übernehmen (sonst liest GSAP sie als Pixel-Versatz)
+    const closed = html.classList.contains('tr-in') && !isLetter;
+    gsap.set([dark, letter], { opacity: isLetter ? 1 : 0 });
+    gsap.set(panL, { x: 0, xPercent: closed ? 0 : -101 });
+    gsap.set(panR, { x: 0, xPercent: closed ? 0 : 101 });
+    gsap.set(beam, { opacity: closed ? 1 : 0, scaleY: closed ? 1 : 0, scaleX: 1 });
 
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a');
@@ -309,7 +307,12 @@
       if (!e.persisted) return;
       leaving = false;
       trEl.classList.remove('is-active');
-      gsap.set(wave, { yPercent: 110 });
+      gsap.killTweensOf([panL, panR, beam]);
+      gsap.set(panL, { xPercent: -101 });
+      gsap.set(panR, { xPercent: 101 });
+      gsap.set(beam, { opacity: 0, scaleY: 0, scaleX: 1 });
+      gsap.killTweensOf([dark, letter]);
+      gsap.set([dark, letter], { opacity: 0, x: 0, y: 0, scale: 1 });
       if (menuOpen) closeMenu(true);
       if (lenis) lenis.start();
     });
@@ -318,30 +321,74 @@
   function navigate(url) {
     if (leaving) return;
     leaving = true;
-    try { sessionStorage.setItem('medusa-tr', '1'); } catch (err) { /* ohne Speicher: kein Problem */ }
+    // Von Szene zu Szene: Buchstabe; von/zur Startseite: Lichtnaht
+    const m = /szenen\/([a-z]+)\.html/i.exec(url);
+    const target = m && SZENEN.find((x) => x.id === m[1]);
+    const art = target && body.dataset.szene ? 'buchstabe' : '1';
+    if (body.classList.contains('page-home')) { try { sessionStorage.setItem('medusa-home-y', String(Math.round(scrollY()))); } catch (err) { /* egal */ } }
+    try { sessionStorage.setItem('medusa-tr', art); } catch (err) { /* ohne Speicher: kein Problem */ }
     if (reduced) { location.href = url; return; }
     trEl.classList.add('is-active');
     if (lenis) lenis.stop();
-    gsap.fromTo(wave, { yPercent: 110 }, {
-      yPercent: 0, duration: 0.95, ease: 'power3.inOut',
-      onComplete: () => { location.href = url; }
-    });
+    if (art === 'buchstabe') {
+      letter.textContent = target.b;
+      gsap.set(letter, { x: 0, y: 0 });
+      gsap.timeline({ onComplete: () => { location.href = url; } })
+        .fromTo(dark, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.inOut' }, 0)
+        .fromTo(letter, { opacity: 0, scale: 0.94, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.85, ease: 'power3.out' }, 0.12);
+      return;
+    }
+    gsap.timeline({ onComplete: () => { location.href = url; } })
+      .to(panL, { xPercent: 0, duration: 0.8, ease: 'power4.inOut' }, 0)
+      .to(panR, { xPercent: 0, duration: 0.8, ease: 'power4.inOut' }, 0)
+      .fromTo(beam, { opacity: 0, scaleY: 0, scaleX: 1 }, { opacity: 1, scaleY: 1, duration: 0.4, ease: 'power3.out' }, 0.42);
   }
   M.navigate = navigate;
 
+  // Neue Seite erst öffnen, wenn Schriften und Bilder da sind (höchstens 1,5 s warten)
+  function pageReady() {
+    const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    const load = document.readyState === 'complete' ? Promise.resolve() : new Promise((r) => window.addEventListener('load', r, { once: true }));
+    return Promise.race([Promise.all([fonts, load]), new Promise((r) => setTimeout(r, 1500))])
+      .then(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+  }
+
   function revealPage() {
-    // Auf der neuen Seite: Rauch zieht ab
     if (!html.classList.contains('tr-in')) return Promise.resolve();
-    gsap.set(wave, { yPercent: 0 });
-    html.classList.remove('tr-in');
-    if (reduced) { gsap.set(wave, { yPercent: 110 }); return Promise.resolve(); }
-    return new Promise((res) => {
-      gsap.to(wave, {
-        yPercent: -110, duration: 1.15, ease: 'power3.inOut', delay: 0.05,
-        onComplete: () => { gsap.set(wave, { yPercent: 110 }); }
-      });
-      gsap.delayedCall(0.5, res);
-    });
+    html.classList.remove('tr-in', 'tr-buchstabe');   // Inline-Werte aus initTransition halten den Zustand
+    if (reduced) {
+      gsap.set(panL, { xPercent: -101 }); gsap.set(panR, { xPercent: 101 }); gsap.set([beam, dark, letter], { opacity: 0 });
+      return Promise.resolve();
+    }
+    if (isLetter) {
+      return pageReady().then(() => new Promise((res) => {
+        // Der goldene Buchstabe legt sich exakt auf den Hintergrund-Buchstaben der Szene und dimmt in ihn hinein
+        const real = document.querySelector('.scene-title__letter');
+        if (real) {
+          M.letterCarried = true;
+          gsap.set(real, { opacity: 1 });
+          const a = letter.getBoundingClientRect(), b = real.getBoundingClientRect();
+          if (a.height && b.height) {
+            const dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+            const dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+            const sc = b.height / a.height;
+            if (Math.abs(dx) > 1 || Math.abs(dy) > 1 || Math.abs(sc - 1) > 0.01) gsap.to(letter, { x: dx, y: dy, scale: sc, duration: 0.7, ease: 'power3.inOut' });
+          }
+        }
+        gsap.timeline({ onComplete: () => gsap.set(letter, { x: 0, y: 0, scale: 1 }) })
+          .to(dark, { opacity: 0, duration: 0.9, ease: 'power2.inOut' }, 0.05)
+          .to(letter, { opacity: 0, duration: 1.3, ease: 'power2.inOut' }, 0.2);
+        gsap.delayedCall(0.35, res);   // Titel baut sich auf, während das Dunkel weicht
+      }));
+    }
+    return pageReady().then(() => new Promise((res) => {
+      gsap.timeline()
+        .to(panL, { xPercent: -101, duration: 1.15, ease: 'power4.inOut' }, 0.1)
+        .to(panR, { xPercent: 101, duration: 1.15, ease: 'power4.inOut' }, 0.1)
+        .to(beam, { scaleX: 60, opacity: 0, duration: 1, ease: 'power3.inOut' }, 0.15)
+        .set(beam, { scaleX: 1, scaleY: 0 });
+      gsap.delayedCall(0.45, res);   // Titel baut sich auf, während sich die Flächen öffnen
+    }));
   }
 
   /* ---------- Szenen-Titel baut sich auf (Unterseiten) ---------- */
@@ -353,7 +400,7 @@
     const split = new SplitText(name, { type: 'lines,words', mask: 'lines', linesClass: 'line' });
     const motto = st.querySelectorAll('.motto > *');
     gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .fromTo(st.querySelector('.scene-title__letter'), { opacity: 0, scale: 0.92, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 2.2 }, 0)
+      .fromTo(st.querySelector('.scene-title__letter'), { opacity: M.letterCarried ? 1 : 0, scale: M.letterCarried ? 1 : 0.92, y: M.letterCarried ? 0 : 40 }, { opacity: 1, scale: 1, y: 0, duration: 2.2 }, 0)
       .fromTo(st.querySelector('.scene-title__eyebrow'), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1 }, 0.1)
       .fromTo(split.words, { yPercent: 110 }, { yPercent: 0, duration: 1.2, stagger: 0.06 }, 0.15)
       .fromTo(motto, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1, stagger: 0.12 }, 0.55)
@@ -442,7 +489,7 @@
 
   /* ---------- Start ---------- */
   function boot() {
-    initGrain();
+
     initCursor();
     initHeader();
     initMenu();

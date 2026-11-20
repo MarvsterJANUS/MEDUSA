@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../css/print.css" media="print">
   <script>
     (function (h) {
-      try { if (sessionStorage.getItem('medusa-tr')) { sessionStorage.removeItem('medusa-tr'); h.classList.add('tr-in'); } } catch (e) {}
+      try { var v = sessionStorage.getItem('medusa-tr'); if (v) { sessionStorage.removeItem('medusa-tr'); if (v === 'buchstabe') h.classList.add('tr-buchstabe'); h.classList.add('tr-in'); } } catch (e) {}
       if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('reduced-motion');
     })(document.documentElement);
   </script>
@@ -21,7 +21,7 @@
 
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
-  <div class="transition" aria-hidden="true"><div class="transition__wave"><div class="transition__smoke"></div></div></div>
+  <div class="transition" aria-hidden="true"><div class="transition__panel transition__panel--l"></div><div class="transition__panel transition__panel--r"></div><div class="transition__beam"></div><div class="transition__dark"></div><span class="transition__letter">Β</span></div>
 
   <header class="site-header">
     <a class="logo" href="../index.html" aria-label="Medusa – zur Startseite"><img src="../media/ui/schild-128.webp" alt="" width="44" height="44"></a>

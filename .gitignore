@@ -9,3 +9,7 @@ assets/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# KI-Rohdateien im Hauptordner (aufbereitete Fassungen liegen in medusa-website/media)
+/*.mp4
+/exec-*.png

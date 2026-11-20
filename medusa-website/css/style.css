@@ -64,7 +64,11 @@
 
 /* ---------- Basis ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-x: clip; }
+/* Keine System-Scrollbar: Die Fortschritts-Schlange zeigt die Position. Verhindert auch,
+   dass die Seite beim Übergang springt, wenn die Scrollbar kurz verschwindet. */
+html, body, [data-lenis-prevent] { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, [data-lenis-prevent]::-webkit-scrollbar { display: none; width: 0; height: 0; }
 html, body { margin: 0; padding: 0; }
 body {
   background: var(--bg);
@@ -77,6 +81,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overflow-x: clip;   /* Überstand (Fries, Tabellen, Nebel) zählt nicht zur Seitenbreite – sonst zoomt das Handy heraus */
 }
 img, svg, canvas, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -124,14 +129,23 @@ html.lenis, html.lenis body { height: auto; }
 .motto figcaption { margin-top: var(--s3); font-size: 13px; letter-spacing: .08em; color: var(--muted); }
 .line-mask { overflow: hidden; }
 
-/* ---------- Filmkorn + Vignette ---------- */
-.grain {
-  position: fixed; inset: -50%; z-index: 9990; pointer-events: none;
-  opacity: .055; background-repeat: repeat; will-change: transform;
+/* ---------- Filmkorn + Vignette ----------
+   Reines CSS: ab dem ersten Bild jeder Seite da, damit beim Seitenwechsel nichts springt.
+   Das Korn ruckelt per steps() ca. 15-mal pro Sekunde – wie echtes Filmkorn, nur transform. */
+html::before {
+  content: ""; position: fixed; inset: -10%; z-index: 9990; pointer-events: none;
+  background: url(../media/ui/korn.png) repeat; opacity: .055;
+  animation: korn .27s steps(1) infinite; will-change: transform;
 }
-.vignette {
-  position: fixed; inset: 0; z-index: 9980; pointer-events: none;
+html::after {
+  content: ""; position: fixed; inset: 0; z-index: 9980; pointer-events: none;
   background: radial-gradient(ellipse 120% 95% at 50% 45%, transparent 55%, rgba(0,0,0,.55) 100%);
+}
+@keyframes korn {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-4%, 3%); }
+  50%  { transform: translate(3%, -4%); }
+  75%  { transform: translate(-2%, -3%); }
 }
 
 /* ---------- Cursor ---------- */
@@ -241,28 +255,61 @@ html.lenis, html.lenis body { height: auto; }
   border: 1px dashed rgba(201,164,106,.45); padding: 4px 10px;
 }
 
-/* ---------- Seitenübergang ---------- */
-.transition { position: fixed; inset: 0; z-index: 850; pointer-events: none; overflow: hidden; }
-.transition__wave {
-  position: absolute; left: 0; right: 0; top: -25vh; height: 150vh;
-  transform: translateY(110%);
-  will-change: transform;
-}
-.transition__wave::before {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(13,15,14,0) 0%, var(--nacht) 16%, var(--nacht) 84%, rgba(13,15,14,0) 100%);
-}
-.transition__smoke {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 50% 12% at 30% 14%, rgba(201,164,106,.28), transparent 70%),
-    radial-gradient(ellipse 40% 10% at 72% 18%, rgba(232,228,220,.10), transparent 70%),
-    radial-gradient(ellipse 45% 10% at 55% 86%, rgba(201,164,106,.18), transparent 70%),
-    radial-gradient(ellipse 35% 9% at 18% 88%, rgba(232,228,220,.08), transparent 70%);
-  filter: blur(18px);
-}
-.tr-in .transition__wave { transform: none; }
+/* ---------- Seitenübergang: Lichtnaht ----------
+   Gleiche Bildsprache wie der Ladebildschirm: Zwei dunkle Flächen schließen sich zur Mitte,
+   an der Naht leuchtet ein goldener Lichtstrahl. Auf der neuen Seite flammt er auf und
+   die Flächen fahren auseinander. Nur transform + opacity. */
+.transition { position: fixed; inset: 0; z-index: 950; pointer-events: none; overflow: hidden; }
 .transition.is-active { pointer-events: auto; }
+.transition__panel { position: absolute; top: 0; bottom: 0; width: 50.5%; will-change: transform; }
+.transition__panel--l {
+  left: 0; transform: translateX(-101%);
+  background: linear-gradient(to right, var(--nacht) 0%, var(--nacht) 72%, #17130e 92%, #2a1f12 100%);
+}
+.transition__panel--r {
+  right: 0; transform: translateX(101%);
+  background: linear-gradient(to left, var(--nacht) 0%, var(--nacht) 72%, #17130e 92%, #2a1f12 100%);
+}
+.transition__beam {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 25%, #fff3dc 50%, var(--gold) 75%, transparent);
+  box-shadow: 0 0 40px 10px rgba(201,164,106,.35);
+  opacity: 0; transform: scaleY(0); will-change: transform, opacity;
+}
+/* Leises Glühen am Strahl – steht nie still, auch nicht während die nächste Seite lädt */
+.transition__beam::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -24px; right: -24px;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,236,200,.38), rgba(201,164,106,0) 70%);
+  animation: beam-glow 1.4s ease-in-out infinite alternate;
+}
+@keyframes beam-glow { from { opacity: .35; } to { opacity: 1; } }
+.tr-in .transition__panel { transform: none; }
+.tr-in .transition__beam { opacity: 1; transform: none; }
+
+/* ---------- Szene → Szene: der Buchstabe führt weiter ----------
+   Die Seite versinkt im Dunkel (gleicher Lichtschein oben links wie der Szenentitel), aus dem
+   Dunkel erscheint der goldene Buchstabe der nächsten Szene – exakt dort, wo auf der neuen
+   Seite der Hintergrund-Buchstabe steht. Dort dimmt er in ihn hinein. */
+.transition__dark {
+  position: absolute; inset: 0; opacity: 0; will-change: opacity;
+  background:
+    radial-gradient(ellipse 55% 60% at 12% 0%, rgba(184,120,58,.22), rgba(184,120,58,0) 65%),
+    var(--nacht);
+}
+.transition__letter {
+  position: absolute; right: calc(var(--gutter) - 2vw); top: 50%; translate: 0 -50%;
+  font-family: var(--f-greek); font-size: clamp(260px, 46vw, 820px); line-height: .8;
+  background: linear-gradient(135deg, #FFF3DC 0%, #E2C590 22%, #C9A46A 46%, #6E5532 88%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  opacity: 0; will-change: transform, opacity; pointer-events: none; user-select: none;
+}
+.tr-buchstabe .transition__panel--l { transform: translateX(-101%); }
+.tr-buchstabe .transition__panel--r { transform: translateX(101%); }
+.tr-buchstabe .transition__beam { opacity: 0; }
+.tr-buchstabe .transition__dark, .tr-buchstabe .transition__letter { opacity: 1; }
+@media (max-width: 900px) {
+  .transition__letter { top: 32%; font-size: 90vw; }
+}
 
 /* ---------- Ladebildschirm ---------- */
 .loader {
@@ -352,14 +399,39 @@ html.lenis, html.lenis body { height: auto; }
 
 .hero__teasers { position: absolute; left: var(--gutter); right: var(--gutter); bottom: clamp(64px, 12vh, 140px); pointer-events: none; }
 .teaser { position: absolute; left: 0; bottom: 0; width: min(100%, 980px); visibility: hidden; }
-.teaser__ref { display: block; margin-bottom: 14px; font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
-.teaser__ref .greek { letter-spacing: 0; font-size: 15px; }
 .teaser__text {
   font-family: var(--f-serif); font-size: clamp(40px, 5.4vw, 92px); line-height: 1; color: var(--marmor);
   text-shadow: 0 4px 40px rgba(0,0,0,.6);
   max-width: 10.5ch;
 }
 .teaser--wide .teaser__text { max-width: 15ch; }
+
+/* Kapitel-Buttons im Film */
+.hero-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin-top: clamp(20px, 2.4vw, 34px); padding-left: .3vw; }
+.hero-btn {
+  display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 22px;
+  border: 1px solid rgba(201,164,106,.6); background: rgba(13,15,14,.32);
+  font-family: var(--f-sans); font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; line-height: 1;
+  color: var(--marmor); white-space: nowrap;
+  transition: background-color .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease);
+}
+.hero-btn .greek { font-size: 17px; letter-spacing: 0; color: var(--gold); transition: color .5s var(--ease); }
+.hero-btn__arrow { font-size: 16px; letter-spacing: 0; transition: transform .5s var(--ease); }
+.hero-btn:hover, .hero-btn:focus-visible { background: var(--gold); border-color: var(--gold); color: var(--nacht); }
+.hero-btn:hover .greek, .hero-btn:focus-visible .greek { color: var(--nacht); }
+.hero-btn:hover .hero-btn__arrow, .hero-btn:focus-visible .hero-btn__arrow { transform: translateX(6px); }
+.hero-btn--ghost { padding: 0 2px; border-color: transparent; border-bottom-color: rgba(232,228,220,.4); background: none; }
+.hero-btn--ghost:hover, .hero-btn--ghost:focus-visible { background: none; border-color: transparent; border-bottom-color: var(--gold); color: var(--gold); }
+.hero__intro .hero-btn { pointer-events: auto; }
+.teaser .hero-btns { opacity: 0; }
+.teaser .hero-btn { pointer-events: none; }
+.teaser.is-live .hero-btn { pointer-events: auto; }
+.hero__teaser-list .hero-btns { margin: var(--s3) 0 var(--s5); padding: 0; }
+.hero__teaser-list .hero-btn { pointer-events: auto; font-family: var(--f-sans); }
+
+/* Menü über dem Film geöffnet: Kopfleiste trotzdem bedienbar */
+.site-header.menu-open .menu-btn, .site-header.menu-open .scene-indicator { opacity: 1 !important; visibility: visible !important; }
+.page-home .site-header.is-hero.menu-open .logo img { opacity: 1; }
 
 .hero__hint {
   position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
@@ -488,6 +560,8 @@ html.lenis, html.lenis body { height: auto; }
   .hero__sub { letter-spacing: .18em; font-size: 11px; }
   .hero__teasers { bottom: 96px; }
   .teaser__text { font-size: clamp(36px, 10vw, 56px); }
+  .hero-btns { gap: 12px 22px; }
+  .hero-btn { padding: 0 18px; font-size: 11px; letter-spacing: .18em; }
   .ov-item a { grid-template-columns: 56px 1fr 24px; grid-template-rows: auto auto; gap: 6px 16px; }
   .ov-letter { grid-row: 1 / 3; font-size: 44px; }
   .ov-teaser { grid-column: 2 / 3; font-size: 15px; }
@@ -510,7 +584,7 @@ html.lenis, html.lenis body { height: auto; }
 .hero__teaser-list { display: none; padding: var(--s7) var(--gutter) 0; }
 .hero__teaser-list li { font-family: var(--f-serif); font-size: clamp(32px, 4vw, 60px); line-height: 1.1; margin-bottom: var(--s4); }
 .reduced-motion .hero__hint-line { animation: none; }
-.reduced-motion .grain { display: none; }
+html.reduced-motion::before { display: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
