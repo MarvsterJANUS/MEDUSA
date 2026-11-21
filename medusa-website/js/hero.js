@@ -20,7 +20,10 @@
 
   const mqMobile = window.matchMedia('(max-width: 900px), (pointer: coarse)');
   const isMobile = mqMobile.matches;
-  const dir = isMobile ? 'mobile' : 'desktop';
+  // Schwächere Geräte (wenige Kerne oder wenig Speicher): leichtere 1280-px-Filmbilder, weniger Staub
+  const lite = (navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4) || (navigator.deviceMemory > 0 && navigator.deviceMemory <= 4);
+  const dir = isMobile || lite ? 'mobile' : 'desktop';
+  const SRC_W = dir === 'mobile' ? 1280 : 1920;   // tatsächliche Breite der Filmbilder
   const PIN_VH = isMobile ? 4.5 : 6;
 
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -89,13 +92,15 @@
 
   function resize() {
     const r = canvas.getBoundingClientRect();
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     cw = canvas.offsetWidth || r.width;
     ch = canvas.offsetHeight || r.height;
+    const s0 = Math.max(cw / IMG_W, ch / IMG_H);
+    // Zeichenfläche nie feiner als die Filmbilder selbst: mehr Pixel bringen keine Schärfe, kosten aber Leistung
+    const native = SRC_W / (IMG_W * s0);           // Bildpixel pro CSS-Pixel
+    dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 1.5, native));
     canvas.width = Math.round(cw * dpr);
     canvas.height = Math.round(ch * dpr);
     // Zustand A: Cover-Zuschnitt mit Fokuspunkt (Gesicht)
-    const s0 = Math.max(cw / IMG_W, ch / IMG_H);
     coverA = { s: s0, dx: clamp(cw / 2 - FOCUS.x * IMG_W * s0, cw - IMG_W * s0, 0), dy: clamp(ch / 2 - FOCUS.y * IMG_H * s0, ch - IMG_H * s0, 0) };
     // Zustand B (nur Hochformat): herauszoomen, bis der ganze Schild mit Rand ins Bild passt
     const sFit = Math.min(cw, ch) * 0.86 / 870;
@@ -185,7 +190,7 @@
 
   function initMotes() {
     motes.length = 0;
-    const n = isMobile ? 34 : 72;
+    const n = isMobile || lite ? 34 : 72;
     for (let i = 0; i < n; i++) {
       const z = Math.random() * 0.8 + 0.2;
       motes.push({
