@@ -45,3 +45,7 @@ mkdir -p medusa-website/media/videos
 $FF -v error -y -i "$Q/s8-qualle.webm" -an -vf "$QV" -c:v libx264 -preset slow -crf 23 -movflags +faststart medusa-website/media/videos/s8-qualle.mp4
 $FF -v error -y -i "$Q/s8-qualle.webm" -an -vf "$QV" -c:v libvpx-vp9 -b:v 0 -crf 34 -row-mt 1 medusa-website/media/videos/s8-qualle.webm
 $FF -v error -y -ss 3 -i medusa-website/media/videos/s8-qualle.mp4 -frames:v 1 -c:v libwebp -quality 80 "$O/s8-qualle.webp"
+# Ω Fazit: Augen-Video als Einzelbilder (Scroll-Scrub), Standbilder für „Bewegung reduzieren“
+mkdir -p medusa-website/media/fazit/desktop medusa-website/media/fazit/mobile
+$FF -v error -y -i ki-bilder/s9-augen-animation.mp4 -vf "scale=1600:-2:flags=lanczos" -c:v libwebp -quality 72 medusa-website/media/fazit/desktop/f_%03d.webp
+$FF -v error -y -i ki-bilder/s9-augen-animation.mp4 -vf "scale=960:-2:flags=lanczos" -c:v libwebp -quality 68 medusa-website/media/fazit/mobile/f_%03d.webp

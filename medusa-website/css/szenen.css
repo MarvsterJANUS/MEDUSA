@@ -291,3 +291,75 @@
 }
 .reduced-motion .tile__more { grid-template-rows: 1fr; opacity: 1; }
 .reduced-motion .tile__media img, .reduced-motion .tile__media video { filter: none; transform: none; }
+
+/* ---------- Ω Fazit: Stein → Farbe ----------
+   Bis sich Medusas Augen öffnen, ist die Seite „aus Stein“: Gold wird zu Grau.
+   --gold ist als Farbe registriert, damit der Wechsel weich animiert. */
+@property --gold { syntax: '<color>'; inherits: true; initial-value: #C9A46A; }
+body[data-szene="fazit"] { transition: --gold 1.8s var(--ease); }
+body[data-szene="fazit"]:not(.is-farbig) { --gold: #8E938F; }
+.reduced-motion body[data-szene="fazit"] { --gold: #C9A46A; }
+
+/* ---------- Ω Fazit: Zeitstrahl ---------- */
+.zeit__wrap { position: relative; margin-top: var(--s6); }
+.zeit__line { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; margin-left: -.5px; background: rgba(142,147,143,.2); }
+.zeit__line i { position: absolute; inset: 0; background: var(--gold); transform-origin: top; transform: scaleY(0); }
+.zeit__list { display: grid; gap: clamp(28px, 4vw, 56px); }
+.zeit__item { position: relative; width: calc(50% - clamp(28px, 4vw, 64px)); }
+.zeit__item:nth-child(odd) { justify-self: start; text-align: right; }
+.zeit__item:nth-child(even) { justify-self: end; }
+.zeit__item::before { content: ""; position: absolute; top: 10px; width: 11px; height: 11px; border-radius: 50%; background: var(--nacht); border: 1px solid var(--gold); }
+.zeit__item:nth-child(odd)::before { right: calc(-1 * clamp(28px, 4vw, 64px) - 6px); }
+.zeit__item:nth-child(even)::before { left: calc(-1 * clamp(28px, 4vw, 64px) - 6px); }
+.zeit__jahr { display: block; font-family: var(--f-display); font-weight: 700; font-size: 17px; letter-spacing: .08em; color: var(--gold); }
+.zeit__rolle { display: block; margin-top: 4px; font-family: var(--f-serif); font-size: clamp(32px, 3.4vw, 56px); line-height: 1; color: var(--marmor); }
+.zeit__item p { margin-top: 10px; font-size: 16px; color: rgba(232,228,220,.8); }
+.zeit__item p a:not(.fn) { margin-left: 6px; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+@media (max-width: 900px) {
+  .zeit__line { left: 6px; }
+  .zeit__item, .zeit__item:nth-child(odd), .zeit__item:nth-child(even) { width: auto; justify-self: stretch; text-align: left; padding-left: 32px; }
+  .zeit__item::before, .zeit__item:nth-child(odd)::before, .zeit__item:nth-child(even)::before { left: 1px; right: auto; }
+}
+
+/* ---------- Ω Fazit: Medusa erwacht ---------- */
+.augen__pin { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: #000; }
+.augen__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.augen__still { display: none; }
+.augen__text { position: absolute; z-index: 2; left: 0; right: 0; bottom: 14vh; text-align: center; padding: 0 var(--gutter); font-family: var(--f-serif); font-size: clamp(32px, 4vw, 68px); line-height: 1.05; color: var(--marmor); text-shadow: 0 6px 40px rgba(0,0,0,.8); pointer-events: none; }
+.augen__text em { color: var(--gold); }
+.augen__pin::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 40%); }
+.augen__cap { position: absolute; z-index: 2; left: var(--gutter); right: var(--gutter); bottom: 20px; text-align: center; font-size: 11px; color: var(--asche); }
+.reduced-motion .augen__canvas { display: none; }
+.reduced-motion .augen__still { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reduced-motion .augen__text--a { display: none; }
+
+/* ---------- Ω Fazit: Stellungnahme ---------- */
+.stellung { border-top: 1px solid rgba(142,147,143,.2); }
+
+/* ---------- Ω Fazit: Abspann wie im Kino ---------- */
+.credits { padding: var(--s7) var(--gutter) calc(var(--s7) * 1.5); background: #000; }
+.credits__inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.credits__play { margin-bottom: var(--s6); font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,164,106,.5); padding: 14px 26px; transition: background-color .4s var(--ease), color .4s var(--ease); }
+.credits__play:hover, .credits__play:focus-visible { background: var(--gold); color: var(--nacht); }
+.credits__eyebrow { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--asche); }
+.credits__title { margin-top: var(--s3); font-family: var(--f-display); font-weight: 900; font-size: clamp(72px, 12vw, 180px); line-height: .85; letter-spacing: .02em; color: var(--marmor); }
+.credits__sub { margin-top: var(--s3); font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: var(--gold); }
+.credits__name { justify-content: center; margin: var(--s6) auto var(--s7); }
+.credits__h { margin: var(--s7) 0 var(--s4); font-size: 12px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+.credits__glossar { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 12px 28px; text-align: left; margin: 0 auto; max-width: 640px; }
+.credits__glossar dt { font-family: var(--f-serif); font-size: 22px; line-height: 1.2; color: var(--marmor); text-align: right; }
+.credits__glossar dd { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(232,228,220,.78); }
+.credits__list { display: grid; gap: 10px; text-align: center; }
+.credits__list li { font-size: 13px; line-height: 1.55; color: rgba(232,228,220,.72); scroll-margin-top: 120px; }
+.credits__list li:target { color: var(--marmor); background: rgba(201,164,106,.12); outline: 1px solid rgba(201,164,106,.4); outline-offset: 4px; }
+.credits__list a { color: var(--asche); text-decoration: underline; text-underline-offset: 3px; word-break: break-all; }
+.credits__list a:hover { color: var(--gold); }
+.credits__nr { color: var(--gold); font-weight: 600; margin-right: 8px; }
+.credits__sz { color: var(--asche); margin-right: 6px; }
+.credits__note { max-width: 62ch; margin: 0 auto; font-size: 13px; line-height: 1.6; color: rgba(232,228,220,.72); }
+.credits__ende { margin-top: var(--s7); font-family: var(--f-serif); font-style: italic; font-size: clamp(30px, 3.4vw, 54px); line-height: 1.1; color: var(--marmor); }
+.credits__ende span { display: block; margin-top: var(--s3); font-style: normal; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+@media (max-width: 700px) {
+  .credits__glossar { grid-template-columns: 1fr; gap: 4px; }
+  .credits__glossar dt { text-align: left; margin-top: 12px; }
+}

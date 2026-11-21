@@ -210,9 +210,43 @@ function skript(s) {
   return fs.existsSync(path.join(OUT, '..', 'js', 'szenen', s.id + '.js')) ? '\n  <script src="../js/szenen/' + s.id + '.js"></script>' : '';
 }
 
+/* ---------- Abspann (Ω Fazit): Quellen, Bildnachweis – aus den Daten erzeugt, fest im HTML ---------- */
+const esc = (t) => String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+function abspann() {
+  const ctx = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(OUT, '..', 'js', 'quellen.js'), 'utf8'), ctx);
+  const Q = ctx.window.MEDUSA_QUELLEN || {};
+  const gruppen = [['antike', 'Antike und historische Texte'], ['fach', 'Museen und Fachquellen'], ['web', 'Artikel und Nachschlagewerke']];
+  let q = '';
+  for (const [g, titel] of gruppen) {
+    const items = Object.keys(Q).filter((k) => Q[k].gruppe === g).sort((a, b) => Q[a].text.localeCompare(Q[b].text, 'de'));
+    q += `\n          <h3 class="credits__h">${titel}</h3>\n          <ol class="credits__list">` +
+      items.map((k) => `\n            <li id="q-${k}">${esc(Q[k].text)}${Q[k].url ? ` · <a href="${esc(Q[k].url)}" rel="noopener">${esc(Q[k].url.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a>` : ''}</li>`).join('') +
+      '\n          </ol>';
+  }
+  const b = ABB_LIST.map((a) => {
+    let w;
+    if (a.ki) w = 'KI-generiert';
+    else if (a.nachweis) {
+      const c = a.nachweis;
+      const lic = /public domain/i.test(c.lizenz) ? 'gemeinfrei' : c.lizenz;
+      const who = c.kuenstler && !/^unknown/i.test(c.kuenstler) ? c.kuenstler.replace(/\s*\(.*?\)\s*/g, ' ').trim() : '';
+      const fundort = c.seite && !/commons.wikimedia/.test(c.seite) ? (c.via || new URL(c.seite).hostname) : 'Wikimedia Commons';
+      w = [who && 'Foto/Urheber: ' + esc(who), fundort, esc(lic)].filter(Boolean).join(', ') + (c.seite ? ` · <a href="${esc(c.seite)}" rel="noopener">Quelle</a>` : '');
+    } else w = '[Bildnachweis folgt]';
+    return `\n            <li><span class="credits__nr">Abb. ${a.nr}</span><span class="credits__sz">${esc(a.szene)}</span> ${esc(a.titel)} – ${w}</li>`;
+  }).join('');
+  return `<h3 class="credits__h">Bildnachweis</h3>
+          <p class="credits__note">Startseite: Bilder und Scroll-Film KI-generiert. Alle als „KI-generiert“ markierten Abbildungen sind mit KI erzeugt. Echte Kunstwerke stammen überwiegend von Wikimedia Commons; geschützte Fotos sind mit Fundort und Rechteinhaber genannt.</p>
+          <ol class="credits__list credits__list--abb">${b}
+          </ol>
+          <h3 class="credits__h">Quellen</h3>${q}`;
+}
+
 S.forEach((s, i) => {
   let html = page(s, i);
   if (inhalt(s)) html = html.replace(/\n    <!-- PLATZHALTER-START -->[\s\S]*?<!-- PLATZHALTER-ENDE -->\n/, '\n');
+  if (html.includes('{{abspann}}')) html = html.replace('{{abspann}}', abspann());
   fs.writeFileSync(path.join(OUT, s.id + '.html'), html, 'utf8');
   console.log('geschrieben:', s.id + '.html', inhalt(s) ? '(Inhalt)' : '(Platzhalter)');
 });

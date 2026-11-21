@@ -300,7 +300,11 @@
       if (!/\.html(#.*)?$/i.test(href)) return;
       e.preventDefault();
       const url = a.href;
-      if (url.split('#')[0] === location.href.split('#')[0]) { // gleiche Seite: nur Menü schließen, nach oben
+      if (url.split('#')[0] === location.href.split('#')[0]) { // gleiche Seite
+        const hash = url.split('#')[1];
+        const target = hash && document.getElementById(hash);
+        if (target) { closeMenu(); if (lenis) lenis.scrollTo(target, { offset: -120, duration: 1.4 }); else target.scrollIntoView(); return; }
+        // sonst: nur Menü schließen, nach oben
         closeMenu();
         M.scrollTo(0, { duration: 1.6 });
         return;
@@ -520,6 +524,18 @@
         initReveals();
         ScrollTrigger.refresh();
         window.addEventListener('load', () => ScrollTrigger.refresh());
+        // Sprungziel aus der Adresse (z. B. Fußnote → fazit.html#q-…): nach dem Aufbau der Pins erneut anspringen
+        const jump = () => {
+          const t = location.hash && document.getElementById(location.hash.slice(1));
+          if (!t) return;
+          const y = Math.max(0, t.getBoundingClientRect().top + window.scrollY - 120);   // feste Pixelposition (Lenis-Stand ist hier noch 0)
+          window.scrollTo(0, y);
+          if (lenis) { lenis.resize(); lenis.scrollTo(y, { immediate: true, force: true }); }   // Seitenlänge nach den Pins neu messen
+        };
+        if (location.hash) {
+          const later = () => setTimeout(() => { ScrollTrigger.refresh(); jump(); }, 120);
+          if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+        }
       });
     }
     M.initReveals = initReveals;

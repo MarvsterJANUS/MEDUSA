@@ -785,5 +785,13 @@ window.MEDUSA_BILDNACHWEIS = [
    "breite": 6000,
    "hoehe": 4000
   }
+ },
+ {
+  "nr": 48,
+  "szene": "Ω Fazit",
+  "titel": "Medusa erwacht aus dem Stein (Video, scroll-gesteuert)",
+  "key": null,
+  "ki": true,
+  "nachweis": null
  }
 ];
