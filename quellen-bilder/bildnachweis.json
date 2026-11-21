@@ -348,5 +348,78 @@
   "breite": 800,
   "hoehe": 1200,
   "via": "TheCollector"
+ },
+ "s8-zisterne": {
+  "datei": "File:Medusa Head at Basilica Cistern, Istanbul, Turkey (Ank Kumar) 06.jpg",
+  "seite": "https://commons.wikimedia.org/wiki/File:Medusa_Head_at_Basilica_Cistern,_Istanbul,_Turkey_(Ank_Kumar)_06.jpg",
+  "titel": "Medusa Head at Basilica Cistern, Istanbul, Turkey (Ank Kumar) 06",
+  "kuenstler": "Ank Kumar",
+  "datum": "2014-12-26 14:31:20",
+  "lizenz": "CC BY-SA 4.0",
+  "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "credit": "Own work",
+  "breite": 6000,
+  "hoehe": 4000
+ },
+ "s8-flagge": {
+  "datei": "File:Sicilian Flag.svg",
+  "seite": "https://commons.wikimedia.org/wiki/File:Flag_of_Sicily.svg",
+  "titel": "Flag of Sicily",
+  "kuenstler": "Angelo Romano",
+  "datum": "2006-02-28",
+  "lizenz": "Public domain",
+  "lizenzUrl": "",
+  "credit": "https://www.regione.sicilia.it/sites/default/files/2021-02/Bandiera.eps",
+  "breite": 800,
+  "hoehe": 530
+ },
+ "s8-tattoo": {
+  "datei": "File:Dom Carter Medusa Tattoo.jpg",
+  "seite": "https://commons.wikimedia.org/wiki/File:Dom_Carter_Medusa_Tattoo.jpg",
+  "titel": "Dom Carter Medusa Tattoo",
+  "kuenstler": "DomCarterTattoo",
+  "datum": "2018-12-30",
+  "lizenz": "CC BY-SA 4.0",
+  "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "credit": "Own work",
+  "breite": 3000,
+  "hoehe": 4000
+ },
+ "s8-versace": {
+  "datei": "File:Emblema Medusa versace.png",
+  "seite": "https://commons.wikimedia.org/wiki/File:Emblema_Medusa_versace.png",
+  "titel": "Emblema Medusa versace",
+  "kuenstler": "Viceryion",
+  "datum": "2022-03-05",
+  "lizenz": "CC BY-SA 4.0",
+  "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "credit": "Own work",
+  "breite": 920,
+  "hoehe": 920
+ },
+ "s8-qualle": {
+  "datei": "File:Jellyfish at Monterey Bay Aquarium 8 2017-11-21.webm",
+  "seite": "https://commons.wikimedia.org/wiki/File:Jellyfish_at_Monterey_Bay_Aquarium_8_2017-11-21.webm",
+  "titel": "Jellyfish at Monterey Bay Aquarium 8 2017-11-21",
+  "kuenstler": "FASTILY",
+  "datum": "2017-11-21 09:32:35",
+  "lizenz": "CC BY-SA 4.0",
+  "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "credit": "Own work",
+  "breite": 1920,
+  "hoehe": 1080
+ },
+ "s8-harryhausen": {
+  "datei": "Medusa, Dr Karl Shuker.JPG",
+  "seite": "https://karlshuker.blogspot.com/2018/04/",
+  "titel": "Ray Harryhausens Medusa-Modell aus „Kampf der Titanen“ (1981), Ausstellung im Valence House Museum",
+  "kuenstler": "Dr. Karl Shuker",
+  "via": "ShukerNature (Blog)",
+  "datum": "2018",
+  "lizenz": "urheberrechtlich geschützt",
+  "lizenzUrl": "",
+  "credit": "Foto: Dr. Karl Shuker",
+  "breite": 1095,
+  "hoehe": 1600
  }
 }

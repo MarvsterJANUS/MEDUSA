@@ -90,5 +90,20 @@ window.MEDUSA_QUELLEN = {
   'artdaily':          { gruppe: 'web', text: 'Artdaily: How a Medusa sculpture from a decade ago became #MeToo art', url: 'https://artdaily.com/news/129187/How-a-Medusa-sculpture-from-a-decade-ago-became--MeToo-art' },
   'collector-garbati': { gruppe: 'web', text: 'The Collector: How did Luciano Garbati reimagine Medusa?', url: 'https://www.thecollector.com/how-luciano-garbati-reimagine-medusa/' },
   'dailyart':          { gruppe: 'web', text: 'DailyArt Magazine: #MeToo and the Medusa myth (u. a. Böcklin)', url: 'https://www.dailyartmagazine.com/metoo-and-the-medusa-myth/' },
-  'sygic':             { gruppe: 'web', text: 'Sygic Travel: The Raft of the Medusa', url: 'https://travel.sygic.com/en/poi/the-raft-of-the-medusa-poi:4088597' }
+  'sygic':             { gruppe: 'web', text: 'Sygic Travel: The Raft of the Medusa', url: 'https://travel.sygic.com/en/poi/the-raft-of-the-medusa-poi:4088597' },
+
+  // Θ Heute
+  'regione-sicilia':   { gruppe: 'fach', text: 'Regione Siciliana: I simboli della Regione – la bandiera', url: 'https://regione.sicilia.it/index%2Ephp/la-regione/i-simboli-della-regione/la-bandiera' },
+  'wiki-flag-sicily':  { gruppe: 'web', text: 'Wikipedia: Flag of Sicily', url: 'https://en.wikipedia.org/wiki/Flag_of_Sicily' },
+  'adweek':            { gruppe: 'web', text: 'Adweek: Versace’s Medusa logo breaks every design rule – so why does it work?', url: 'https://www.adweek.com/brand-marketing/versaces-medusa-logo-breaks-every-design-rule-so-why-does-it-work/' },
+  'sixtysix':          { gruppe: 'web', text: 'Sixtysix Magazine: What does the Versace logo mean?', url: 'https://sixtysixmag.com/landing/what-does-the-versace-logo-mean/' },
+  'medium-versace':    { gruppe: 'web', text: 'Medium: History of the logo Versace', url: 'https://medium.com/@darar.11des/history-of-the-logo-versace-b805f0ff629b' },
+  'knowyourmeme':      { gruppe: 'web', text: 'Know Your Meme: Medusa Tattoo', url: 'https://knowyourmeme.com/memes/medusa-tattoo' },
+  'yahoo-tattoo':      { gruppe: 'web', text: 'Parade / Yahoo: Medusa tattoos are everywhere lately – here’s why', url: 'https://www.yahoo.com/lifestyle/medusa-tattoos-everywhere-lately-heres-110000504.html' },
+  'wiki-clash':        { gruppe: 'web', text: 'Wikipedia: Clash of the Titans (1981 film)', url: 'https://en.wikipedia.org/wiki/Clash_of_the_Titans_(1981_film)' },
+  'denofgeek':         { gruppe: 'web', text: 'Den of Geek: The top 10 Ray Harryhausen creatures', url: 'https://www.denofgeek.com/movies/the-top-10-ray-harryhausen-creatures' },
+  'cultural-depictions': { gruppe: 'web', text: 'Wikipedia (IPFS-Spiegel): Cultural depictions of Medusa and Gorgons', url: 'https://ipfs.ssi.eecc.de/ipns/en.wikipedia-on-ipfs.org/wiki/Cultural_depictions_of_Medusa_and_Gorgons' },
+  'wissen':            { gruppe: 'web', text: 'wissen.de: Sind Quallen immer durchsichtige, frei schwimmende Gebilde?', url: 'https://www.wissen.de/bildwb/sind-quallen-immer-durchsichtige-frei-schwimmende-gebilde' },
+  'etymonline':        { gruppe: 'web', text: 'Etymonline: medusa', url: 'https://www.etymonline.com/de/word/medusa' },
+  'istanbul':          { gruppe: 'web', text: 'istanbul.com: Basilica Cistern Guide', url: 'https://istanbul.com/de/blog/landmark-guides/basilica-cistern-guide' }
 };

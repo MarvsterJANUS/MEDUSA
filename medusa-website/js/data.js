@@ -9,6 +9,6 @@ window.MEDUSA_SZENEN = [
   { id: 'deutungen',     b: 'Ε', t: 'Deutungen',     motiv: 's5-karte1-schutz', teaser: 'Schutz, Opfer, Chaos, Blick, Freud, Cixous, Tod – sieben Blicke auf ein Gesicht.', bild: 'deutungen' },
   { id: 'literatur',     b: 'Ζ', t: 'Literatur',     motiv: 's6-buch',          teaser: 'Von Homer bis Percy Jackson: Wer über Medusa schreibt, schreibt über das Hinsehen.', bild: 'literatur' },
   { id: 'kunst',         b: 'Η', t: 'Kunst',         motiv: 'f-caravaggio',     teaser: 'Von Korfu bis New York – zweieinhalb Jahrtausende Medusenhäupter.', bild: 'kunst' },
-  { id: 'heute',         b: 'Θ', t: 'Heute',         motiv: 'v-qualle',         teaser: 'Flagge, Mode, Tattoo, Qualle: Medusa ist nie verschwunden.' },
+  { id: 'heute',         b: 'Θ', t: 'Heute',         motiv: 'v-qualle',         teaser: 'Flagge, Mode, Tattoo, Qualle: Medusa ist nie verschwunden.', bild: 'heute' },
   { id: 'fazit',         b: 'Ω', t: 'Fazit',         motiv: 's9-augen',         teaser: 'Alles wandelt sich, nichts vergeht.', bild: 'fazit' }
 ];

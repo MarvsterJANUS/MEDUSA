@@ -32,3 +32,16 @@ done
 # Η Kunst: Vergleichsregler Cellini ↔ Garbati, gleich große Hochformate (4:5), dunkel abgestimmt
 w s7-cellini "crop=1920:2400:0:120,scale=1000:1250,curves=all='0/0 0.25/0.25 0.55/0.45 1/0.58',eq=contrast=1.12:gamma=0.97,vignette=angle=PI/3.8" s7-vergleich-cellini 84
 w s7-garbati "crop=560:700:320:40,scale=1000:1250,eq=gamma=0.95,vignette=angle=PI/4" s7-vergleich-garbati 84
+# Θ Heute: Kacheln im Hochformat 800×1000
+w s8-zisterne "scale=1920:-2,crop=900:1125:620:150,scale=800:1000,eq=gamma=0.9" s8-zisterne 82
+w s8-flagge "crop=ih*0.8:ih:(iw-ih*0.8)/2:0,scale=800:1000" s8-flagge 85
+w s8-tattoo "scale=1500:-2,crop=1200:1500:150:250,scale=800:1000" s8-tattoo 82
+w s8-harryhausen "crop=1095:1369:0:0,scale=800:1000,eq=gamma=0.9:saturation=0.85" s8-harryhausen 82
+# Versace-Emblem: Schachbrett ist eingebrannt → dunkle Linien als Maske, Marmorweiß auf Nacht
+$FF -v error -y -f lavfi -i color=c=0x0D0F0E:s=800x1000 -i "$Q/s8-versace.png" -filter_complex "[1]scale=600:600,format=rgba,geq=r=232:g=228:b=220:a='if(lt((r(X,Y)+g(X,Y)+b(X,Y))/3,110),255,0)'[l];[0][l]overlay=100:200" -frames:v 1 -c:v libwebp -quality 85 "$O/s8-versace.webp"
+# Qualle: 8-s-Schleife, Blau → Gold auf Schwarz (Rot+Grün als Helligkeit), MP4 + WebM + Standbild
+QV="trim=start=2:end=10,setpts=PTS-STARTPTS,crop=864:1080:528:0,scale=640:800:flags=lanczos,colorchannelmixer=rr=.5:rg=.5:rb=0:gr=.5:gg=.5:gb=0:br=.5:bg=.5:bb=0,curves=all='0/0 0.12/0.02 0.55/0.6 1/1',colorchannelmixer=rr=1.0:gg=0.80:bb=0.50,fps=24,format=yuv420p"
+mkdir -p medusa-website/media/videos
+$FF -v error -y -i "$Q/s8-qualle.webm" -an -vf "$QV" -c:v libx264 -preset slow -crf 23 -movflags +faststart medusa-website/media/videos/s8-qualle.mp4
+$FF -v error -y -i "$Q/s8-qualle.webm" -an -vf "$QV" -c:v libvpx-vp9 -b:v 0 -crf 34 -row-mt 1 medusa-website/media/videos/s8-qualle.webm
+$FF -v error -y -ss 3 -i medusa-website/media/videos/s8-qualle.mp4 -frames:v 1 -c:v libwebp -quality 80 "$O/s8-qualle.webp"

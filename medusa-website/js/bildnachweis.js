@@ -670,5 +670,120 @@ window.MEDUSA_BILDNACHWEIS = [
    "breite": 5872,
    "hoehe": 4008
   }
+ },
+ {
+  "nr": 42,
+  "szene": "Θ Heute",
+  "titel": "Flagge der Region Sizilien",
+  "key": "s8-flagge",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Sicilian Flag.svg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Flag_of_Sicily.svg",
+   "titel": "Flag of Sicily",
+   "kuenstler": "Angelo Romano",
+   "datum": "2006-02-28",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "https://www.regione.sicilia.it/sites/default/files/2021-02/Bandiera.eps",
+   "breite": 800,
+   "hoehe": 530
+  }
+ },
+ {
+  "nr": 43,
+  "szene": "Θ Heute",
+  "titel": "Medusa-Emblem von Versace",
+  "key": "s8-versace",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Emblema Medusa versace.png",
+   "seite": "https://commons.wikimedia.org/wiki/File:Emblema_Medusa_versace.png",
+   "titel": "Emblema Medusa versace",
+   "kuenstler": "Viceryion",
+   "datum": "2022-03-05",
+   "lizenz": "CC BY-SA 4.0",
+   "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit": "Own work",
+   "breite": 920,
+   "hoehe": 920
+  }
+ },
+ {
+  "nr": 44,
+  "szene": "Θ Heute",
+  "titel": "Medusa-Tattoo",
+  "key": "s8-tattoo",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Dom Carter Medusa Tattoo.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Dom_Carter_Medusa_Tattoo.jpg",
+   "titel": "Dom Carter Medusa Tattoo",
+   "kuenstler": "DomCarterTattoo",
+   "datum": "2018-12-30",
+   "lizenz": "CC BY-SA 4.0",
+   "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit": "Own work",
+   "breite": 3000,
+   "hoehe": 4000
+  }
+ },
+ {
+  "nr": 45,
+  "szene": "Θ Heute",
+  "titel": "Ray Harryhausens Medusa-Modell aus „Kampf der Titanen“ (1981), Valence House Museum",
+  "key": "s8-harryhausen",
+  "ki": false,
+  "nachweis": {
+   "datei": "Medusa, Dr Karl Shuker.JPG",
+   "seite": "https://karlshuker.blogspot.com/2018/04/",
+   "titel": "Ray Harryhausens Medusa-Modell aus „Kampf der Titanen“ (1981), Ausstellung im Valence House Museum",
+   "kuenstler": "Dr. Karl Shuker",
+   "via": "ShukerNature (Blog)",
+   "datum": "2018",
+   "lizenz": "urheberrechtlich geschützt",
+   "lizenzUrl": "",
+   "credit": "Foto: Dr. Karl Shuker",
+   "breite": 1095,
+   "hoehe": 1600
+  }
+ },
+ {
+  "nr": 46,
+  "szene": "Θ Heute",
+  "titel": "Ohrenquallen im Monterey Bay Aquarium (Video, farblich angepasst)",
+  "key": "s8-qualle",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Jellyfish at Monterey Bay Aquarium 8 2017-11-21.webm",
+   "seite": "https://commons.wikimedia.org/wiki/File:Jellyfish_at_Monterey_Bay_Aquarium_8_2017-11-21.webm",
+   "titel": "Jellyfish at Monterey Bay Aquarium 8 2017-11-21",
+   "kuenstler": "FASTILY",
+   "datum": "2017-11-21 09:32:35",
+   "lizenz": "CC BY-SA 4.0",
+   "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit": "Own work",
+   "breite": 1920,
+   "hoehe": 1080
+  }
+ },
+ {
+  "nr": 47,
+  "szene": "Θ Heute",
+  "titel": "Medusenkopf in der Cisterna Basilica, Istanbul",
+  "key": "s8-zisterne",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Medusa Head at Basilica Cistern, Istanbul, Turkey (Ank Kumar) 06.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Medusa_Head_at_Basilica_Cistern,_Istanbul,_Turkey_(Ank_Kumar)_06.jpg",
+   "titel": "Medusa Head at Basilica Cistern, Istanbul, Turkey (Ank Kumar) 06",
+   "kuenstler": "Ank Kumar",
+   "datum": "2014-12-26 14:31:20",
+   "lizenz": "CC BY-SA 4.0",
+   "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit": "Own work",
+   "breite": 6000,
+   "hoehe": 4000
+  }
  }
 ];
