@@ -459,6 +459,7 @@
       p.setAttribute('aria-modal', 'true');
       p.setAttribute('data-lenis-prevent', '');
       p.hidden = true;
+      body.appendChild(p);   // außerhalb von <main>, das beim Öffnen gesperrt (inert) wird
       if (!p.querySelector('.panel__close')) {
         const c = document.createElement('button');
         c.type = 'button';

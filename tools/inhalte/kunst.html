@@ -1,0 +1,265 @@
+    <section class="section">
+      <div class="split">
+        <p class="lead" data-reveal>Jedes Medusenhaupt zeigt, wovor seine Zeit <em>Angst</em> hatte – oder wen sie bewunderte.</p>
+        <div class="prose" data-reveal>
+          <p>Vom Tempelgiebel auf Korfu bis zur Bronze in Manhattan: Zweieinhalb Jahrtausende lang haben Künstler Medusa gemeißelt, gegossen und gemalt. Mal ist sie Fratze, mal Opfer, mal Trophäe, mal Siegerin.</p>
+          <p>Fahre über einen Titel, um das Werk zu sehen. Ein Klick öffnet das Werkblatt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GROSSER MOMENT: Liste der Werke, das Bild folgt dem Cursor; Klick öffnet das Werkblatt -->
+    <section class="section section--tight gallery" aria-label="Werke">
+      <p class="kicker" data-reveal>Elf Werke · chronologisch</p>
+      <ol class="werke">
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-korfu" data-img="../media/bilder/s4-korfu.webp">
+            <span class="werk__jahr">um 590/580 v. Chr.</span>
+            <span class="werk__name">Gorgo von Korfu <em>Westgiebel des Artemis-Tempels</em></span>
+            <span class="werk__ort">Archäologisches Museum Korfu</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-cellini" data-img="../media/bilder/s7-cellini.webp">
+            <span class="werk__jahr">1545–1554</span>
+            <span class="werk__name">Benvenuto Cellini <em>Perseus</em></span>
+            <span class="werk__ort">Loggia dei Lanzi, Florenz</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-caravaggio" data-img="../media/bilder/f-caravaggio.webp">
+            <span class="werk__jahr">1597/98</span>
+            <span class="werk__name">Caravaggio <em>Medusa</em></span>
+            <span class="werk__ort">Uffizien, Florenz</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-rubens" data-img="../media/bilder/s7-rubens.webp">
+            <span class="werk__jahr">1617/18</span>
+            <span class="werk__name">Rubens und Snyders <em>Haupt der Medusa</em></span>
+            <span class="werk__ort">Kunsthistorisches Museum, Wien</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-uffizi" data-img="../media/bilder/s7-uffizi.webp">
+            <span class="werk__jahr">um 1620–30</span>
+            <span class="werk__name">Flämischer Maler <em>Haupt der Medusa</em></span>
+            <span class="werk__ort">Uffizien, Florenz</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-bernini" data-img="../media/bilder/s7-bernini.webp">
+            <span class="werk__jahr">um 1644–48</span>
+            <span class="werk__name">Gian Lorenzo Bernini <em>Büste der Medusa</em></span>
+            <span class="werk__ort">Kapitolinische Museen, Rom</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-canova" data-img="../media/bilder/s7-canova.webp">
+            <span class="werk__jahr">1798–1801</span>
+            <span class="werk__name">Antonio Canova <em>Perseus</em></span>
+            <span class="werk__ort">Vatikanische Museen</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-boecklin" data-img="../media/bilder/s7-boecklin.webp">
+            <span class="werk__jahr">1878</span>
+            <span class="werk__name">Arnold Böcklin <em>Medusa</em></span>
+            <span class="werk__ort">Germanisches Nationalmuseum, Nürnberg</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-burnejones" data-img="../media/bilder/s3-bj-09.webp">
+            <span class="werk__jahr">1875–1888</span>
+            <span class="werk__name">Edward Burne-Jones <em>Perseus-Zyklus</em></span>
+            <span class="werk__ort">Stuttgart und Southampton</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-klimt" data-img="../media/bilder/s7-klimt.webp">
+            <span class="werk__jahr">1902</span>
+            <span class="werk__name">Gustav Klimt <em>Beethovenfries</em></span>
+            <span class="werk__ort">Secession, Wien</span>
+          </button>
+        </li>
+        <li class="werk">
+          <button type="button" class="werk__btn" data-werk="w-garbati" data-img="../media/bilder/s7-garbati.webp">
+            <span class="werk__jahr">2008</span>
+            <span class="werk__name">Luciano Garbati <em>Medusa mit dem Haupt des Perseus</em></span>
+            <span class="werk__ort">2020/21 Collect Pond Park, New York</span>
+          </button>
+        </li>
+      </ol>
+    </section>
+
+    <aside class="werkblatt" id="w-korfu" aria-label="Gorgo von Korfu: Westgiebel des Artemis-Tempels" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s4-korfu.webp" alt="Steinrelief: die Gorgo frontal im Knielauf, mit Schlangengürtel, daneben eine große Raubkatze." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Gorgo-Giebel von Korfu</b>, um 590/580 v. Chr.. {{credit:s4-korfu}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">01 · um 590/580 v. Chr.</p>
+        <h2 class="werkblatt__title">Gorgo von Korfu<em>Westgiebel des Artemis-Tempels</em></h2>
+        <h3>Was man sieht</h3><p>Die Gorgo läuft frontal auf uns zu, im typischen Knielauf, umgeben von ihren Kindern Pegasus und Chrysaor und flankiert von zwei Raubkatzen.<a class="fn" href="fazit.html#q-ancientgreece" data-quelle="ancient-greece.org: Gorgon pediment" aria-label="Quelle: ancient-greece.org">1</a></p>
+        <h3>Was es aussagt</h3><p>Hier soll nichts gefallen. Die Fratze bewacht den Tempel – Schutz durch Schrecken. Es ist der älteste erhaltene große Steingiebel Griechenlands.<a class="fn" href="fazit.html#q-gtp" data-quelle="GTP: Archaeological Museum of Corfu" aria-label="Quelle: GTP">2</a> Mehr dazu in <a href="schutzzeichen.html">Δ Schutzzeichen</a>.</p>
+        <h3>Wo es heute ist</h3><p>Archäologisches Museum Korfu.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-cellini" aria-label="Benvenuto Cellini: Perseus" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-cellini.webp" alt="Bronzestatue: Perseus steht nackt auf Medusas Körper und hält ihren abgeschlagenen Kopf in die Höhe." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Benvenuto Cellini, Perseus</b>, 1545–1554. {{credit:s7-cellini}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">02 · 1545–1554</p>
+        <h2 class="werkblatt__title">Benvenuto Cellini<em>Perseus</em></h2>
+        <h3>Was man sieht</h3><p>Perseus steht auf Medusas Körper und hält ihren abgeschlagenen Kopf triumphierend in die Höhe.<a class="fn" href="fazit.html#q-smithsonian-garbati" data-quelle="Smithsonian Magazine: #MeToo Medusa statue" aria-label="Quelle: Smithsonian Magazine">3</a></p>
+        <h3>Was es aussagt</h3><p>Der Held als Sieger, die Gorgone als Trophäe. Gut 450 Jahre später wird genau dieses Bild zum Ausgangspunkt für Luciano Garbati.<a class="fn" href="fazit.html#q-collector-garbati" data-quelle="The Collector: Luciano Garbati" aria-label="Quelle: The Collector">4</a></p>
+        <h3>Wo es heute ist</h3><p>Loggia dei Lanzi an der Piazza della Signoria in Florenz.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-caravaggio" aria-label="Caravaggio: Medusa" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/f-caravaggio.webp" alt="Gemälde auf einem runden Schild: Medusas abgeschlagener Kopf im Moment des Schreis, mit Schlangenhaar und Blut." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Caravaggio, Medusa</b>, 1597/98. {{credit:f-caravaggio}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">03 · 1597/98</p>
+        <h2 class="werkblatt__title">Caravaggio<em>Medusa</em></h2>
+        <h3>Was man sieht</h3><p>Medusa im Moment ihres Todes: Der Mund ist zum Schrei aufgerissen, das Blut schießt aus dem Hals – gemalt auf einen gewölbten Holzschild.<a class="fn" href="fazit.html#q-wiki-caravaggio" data-quelle="Wikipedia: Medusa (Caravaggio)" aria-label="Quelle: Wikipedia">5</a></p>
+        <h3>Was es aussagt</h3><p>Der Schild war ein Geschenk an Ferdinando I. de’ Medici.<a class="fn" href="fazit.html#q-collector-caravaggio" data-quelle="The Collector: Why did Caravaggio paint Medusa?" aria-label="Quelle: The Collector">6</a> Für die Medici war Medusa ein Sinnbild für Weisheit und Umsicht.<a class="fn" href="fazit.html#q-visittuscany" data-quelle="Visit Tuscany: Die Medusa von Caravaggio" aria-label="Quelle: Visit Tuscany">7</a> Caravaggio malte zwei Fassungen (1596 und um 1597); geliefert wurde vermutlich am 7. September 1598.<a class="fn" href="fazit.html#q-beculture" data-quelle="BeCulture: Caravaggios Medusa" aria-label="Quelle: BeCulture">8</a></p>
+        <h3>Wo es heute ist</h3><p>Uffizien, Florenz.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-rubens" aria-label="Rubens und Snyders: Haupt der Medusa" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-rubens.webp" alt="Gemälde: Medusas abgeschlagener Kopf liegt auf felsigem Boden, um ihn winden sich Schlangen und kleine Tiere." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Peter Paul Rubens und Frans Snyders, Haupt der Medusa</b>, 1617/18. {{credit:s7-rubens}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">04 · 1617/18</p>
+        <h2 class="werkblatt__title">Rubens und Snyders<em>Haupt der Medusa</em></h2>
+        <h3>Was man sieht</h3><p>Der Kopf liegt am Boden wie ein Stillleben des Grauens – und aus seinem Haar kriechen Schlangen in alle Richtungen.</p>
+        <h3>Was es aussagt</h3><p>Ein Gemeinschaftswerk: Die Schlangen stammen vermutlich von Frans Snyders, einem Spezialisten für Tiere.<a class="fn" href="fazit.html#q-khm-rubens" data-quelle="Kunsthistorisches Museum Wien: Haupt der Medusa" aria-label="Quelle: Kunsthistorisches Museum Wien">9</a> Umstritten ist, welche Fassung die erste war: Das Wiener Bild gilt teils als Original, teils als spätere Fassung eines Bildes in Brünn.<a class="fn" href="fazit.html#q-wiki-rubens" data-quelle="Wikipedia: Medusa (Rubens)" aria-label="Quelle: Wikipedia">10</a></p>
+        <h3>Wo es heute ist</h3><p>Kunsthistorisches Museum, Wien.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-uffizi" aria-label="Flämischer Maler: Haupt der Medusa" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-uffizi.webp" alt="Dunkles Gemälde: Medusas Kopf liegt auf dunklem, felsigem Boden, ein Knäuel aus Schlangen quillt aus ihrem Haar." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Flämischer Maler, Haupt der Medusa</b>, um 1620–30. {{credit:s7-uffizi}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">05 · um 1620–30</p>
+        <h2 class="werkblatt__title">Flämischer Maler<em>Haupt der Medusa</em></h2>
+        <h3>Was man sieht</h3><p>Ein Kopf auf dunklem Grund, umringt von Schlangen – kaum Licht, viel Verwesung.</p>
+        <h3>Was es aussagt</h3><p>Lange hielt man das Bild für einen Leonardo. Genau dieses Gemälde inspirierte 1819 Percy Bysshe Shelley zu seinem Gedicht.<a class="fn" href="fazit.html#q-cuny-shelley" data-quelle="CUNY Manifold: On the Medusa of Leonardo da Vinci" aria-label="Quelle: CUNY Manifold">11</a><a class="fn" href="fazit.html#q-ucl-shelley" data-quelle="Nabugodi: Medusan Figures (UCL)" aria-label="Quelle: Nabugodi">12</a> Mehr dazu in <a href="literatur.html">Ζ Literatur</a>.</p>
+        <h3>Wo es heute ist</h3><p>Uffizien, Florenz.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-bernini" aria-label="Gian Lorenzo Bernini: Büste der Medusa" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-bernini.webp" alt="Marmorbüste: eine junge Frau mit Schlangenhaar, der Blick gesenkt, das Gesicht voller Schmerz." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Gian Lorenzo Bernini, Büste der Medusa</b>, um 1644–48. {{credit:s7-bernini}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">06 · um 1644–48</p>
+        <h2 class="werkblatt__title">Gian Lorenzo Bernini<em>Büste der Medusa</em></h2>
+        <h3>Was man sieht</h3><p>Eine junge Frau aus Marmor, die Stirn in Falten, der Blick schmerzvoll zur Seite gerichtet.</p>
+        <h3>Was es aussagt</h3><p>Bernini zeigt Medusa, wie sie ihr eigenes Spiegelbild sieht – und sich vor unseren Augen selbst in Marmor verwandelt. Ein Wortspiel mit dem Material und ein Bild für die Macht des Bildhauers, der Stein lebendig macht.<a class="fn" href="fazit.html#q-capitolini" data-quelle="Musei Capitolini: Bernini, Büste der Medusa" aria-label="Quelle: Musei Capitolini">13</a></p>
+        <h3>Wo es heute ist</h3><p>Kapitolinische Museen, Rom.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-canova" aria-label="Antonio Canova: Perseus" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-canova.webp" alt="Marmorstatue: Perseus hält in der einen Hand das Schwert, in der anderen den abgeschlagenen, ruhigen Kopf der Medusa." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Antonio Canova, Perseus</b>, 1798–1801. {{credit:s7-canova}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">07 · 1798–1801</p>
+        <h2 class="werkblatt__title">Antonio Canova<em>Perseus</em></h2>
+        <h3>Was man sieht</h3><p>Ein idealer, ruhiger Held aus weißem Marmor – und ein Medusenkopf, der nicht schreit, sondern schön und still ist.</p>
+        <h3>Was es aussagt</h3><p>Für das Medusenhaupt nahm Canova die Medusa Rondanini zum Vorbild – die „schöne Medusa“ der Antike.<a class="fn" href="fazit.html#q-wiki-rondanini" data-quelle="Wikipedia: Medusa Rondanini" aria-label="Quelle: Wikipedia">14</a></p>
+        <h3>Wo es heute ist</h3><p>Vatikanische Museen, Rom.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-boecklin" aria-label="Arnold Böcklin: Medusa" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-boecklin.webp" alt="Gemälde: Medusas Gesicht frontal, bleich, mit leerem, erschöpftem Blick und offenem Mund, umgeben von Schlangen." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Arnold Böcklin, Medusa</b>, 1878. {{credit:s7-boecklin}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">08 · 1878</p>
+        <h2 class="werkblatt__title">Arnold Böcklin<em>Medusa</em></h2>
+        <h3>Was man sieht</h3><p>Kein Monster, sondern ein bleiches, erschöpftes Gesicht mit leerem Blick – Medusa schaut uns direkt an.</p>
+        <h3>Was es aussagt</h3><p>Im 19. Jahrhundert verschiebt sich der Blick: Diese Medusa macht keine Angst mehr – man hat eher Mitleid mit ihr. Böcklin malte sie 1878.<a class="fn" href="fazit.html#q-dailyart" data-quelle="DailyArt Magazine: #MeToo and the Medusa myth" aria-label="Quelle: DailyArt Magazine">15</a></p>
+        <h3>Wo es heute ist</h3><p>Germanisches Nationalmuseum, Nürnberg.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-burnejones" aria-label="Edward Burne-Jones: Perseus-Zyklus" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s3-bj-09.webp" alt="Gemälde: Perseus und Andromeda blicken in einen Brunnen, in dem sich das Haupt der Medusa spiegelt." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Edward Burne-Jones, Das unheilvolle Haupt</b>, 1875–1888. {{credit:s3-bj-09}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">09 · 1875–1888</p>
+        <h2 class="werkblatt__title">Edward Burne-Jones<em>Perseus-Zyklus</em></h2>
+        <h3>Was man sieht</h3><p>Im letzten Bild zeigt Perseus Andromeda das Haupt – aber nur als Spiegelbild im Wasser eines Brunnens.</p>
+        <h3>Was es aussagt</h3><p>Arthur Balfour bestellte den Zyklus 1875 für sein Londoner Musikzimmer. Nur vier Ölbilder wurden fertig, heute in der Staatsgalerie Stuttgart; die zehn großen Gouache-Entwürfe hängen in Southampton.<a class="fn" href="fazit.html#q-truvue" data-quelle="Tru Vue: Burne-Jones’ Perseus-Zyklus" aria-label="Quelle: Tru Vue">16</a> Den ganzen Zyklus zeigt <a href="perseus.html">Γ Perseus</a>.</p>
+        <h3>Wo es heute ist</h3><p>Staatsgalerie Stuttgart (Ölbilder) und Southampton City Art Gallery (Gouachen).</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-klimt" aria-label="Gustav Klimt: Beethovenfries" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-klimt.webp" alt="Ausschnitt aus Klimts Beethovenfries: drei schlanke, nackte Frauengestalten mit goldverziertem Haar, neben ihnen ein affenartiges Ungeheuer." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Gustav Klimt, Beethovenfries (Die feindlichen Gewalten)</b>, 1902. {{credit:s7-klimt}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">10 · 1902</p>
+        <h2 class="werkblatt__title">Gustav Klimt<em>Beethovenfries</em></h2>
+        <h3>Was man sieht</h3><p>Drei schlanke Frauengestalten mit wallendem Haar, ornamental und golden – neben dem Ungeheuer Typhoeus.</p>
+        <h3>Was es aussagt</h3><p>Klimts drei Gorgonen stehen für die „feindlichen Gewalten“: Krankheit, Wahnsinn und Tod.<a class="fn" href="fazit.html#q-albertina" data-quelle="Albertina: Klimt, Beethovenfries" aria-label="Quelle: Albertina">17</a> Die Gefahr ist hier schön, verführerisch – typisch für die Zeit um 1900.</p>
+        <h3>Wo es heute ist</h3><p>Secession, Wien.</p>
+      </div>
+    </aside>
+    <aside class="werkblatt" id="w-garbati" aria-label="Luciano Garbati: Medusa mit dem Haupt des Perseus" hidden>
+      <figure class="werkblatt__fig">
+        <img src="../media/bilder/s7-garbati.webp" alt="Statue: eine nackte Frau mit Schlangenhaar, in der linken Hand ein Schwert, in der rechten den abgeschlagenen Kopf eines Mannes." loading="lazy" decoding="async">
+        <figcaption><span class="abb">Abb. {{abb}}</span><b>Luciano Garbati, Medusa mit dem Haupt des Perseus</b>, 2008. {{credit:s7-garbati}}</figcaption>
+      </figure>
+      <div class="werkblatt__text">
+        <p class="kicker">11 · 2008</p>
+        <h2 class="werkblatt__title">Luciano Garbati<em>Medusa mit dem Haupt des Perseus</em></h2>
+        <h3>Was man sieht</h3><p>Medusa steht, das Schwert links, den Kopf des Perseus rechts. Der Kopf trägt die Züge des Künstlers selbst.<a class="fn" href="fazit.html#q-artdaily" data-quelle="Artdaily: How a Medusa sculpture became #MeToo art" aria-label="Quelle: Artdaily">18</a></p>
+        <h3>Was es aussagt</h3><p>Ein Rollentausch: Garbati ließ sich von Cellinis Perseus inspirieren und drehte ihn um.<a class="fn" href="fazit.html#q-collector-garbati" data-quelle="The Collector: Luciano Garbati" aria-label="Quelle: The Collector">19</a> Kritik gab es auch – an einem männlichen Künstler und an der nackten Figur.<a class="fn" href="fazit.html#q-smithsonian-garbati" data-quelle="Smithsonian Magazine: #MeToo Medusa statue" aria-label="Quelle: Smithsonian Magazine">20</a><a class="fn" href="fazit.html#q-dailybeast" data-quelle="The Daily Beast: Medusa is back" aria-label="Quelle: The Daily Beast">21</a></p>
+        <h3>Wo es heute ist</h3><p>Eine Bronze stand vom 14. Oktober 2020 bis 30. April 2021 im Collect Pond Park in New York – gegenüber dem Gericht, in dem Harvey Weinstein der Prozess gemacht wurde.<a class="fn" href="fazit.html#q-artnewspaper" data-quelle="The Art Newspaper (2020)" aria-label="Quelle: The Art Newspaper (2020)">22</a></p>
+      </div>
+    </aside>
+
+    <section class="section swap-section">
+      <p class="kicker" data-reveal>Rollentausch</p>
+      <h2 class="h2" data-reveal>Wer hält wessen Kopf?</h2>
+      <p class="lead swap__lead" data-reveal>Ziehe die Linie – und aus dem Helden mit der Trophäe wird die Frau mit dem Schwert.</p>
+      <div class="swap" data-reveal>
+        <img class="swap__img" src="../media/bilder/s7-vergleich-cellini.webp" width="1000" height="1250" alt="Cellinis Perseus hält den Kopf der Medusa in die Höhe." loading="lazy">
+        <div class="swap__top"><img class="swap__img" src="../media/bilder/s7-vergleich-garbati.webp" width="1000" height="1250" alt="Garbatis Medusa hält den Kopf des Perseus in der Hand." loading="lazy"></div>
+        <div class="swap__line" aria-hidden="true"><span class="swap__knob">⟷</span></div>
+        <span class="swap__label swap__label--a" aria-hidden="true">Cellini · 1554</span>
+        <span class="swap__label swap__label--b" aria-hidden="true">Garbati · 2008</span>
+        <input class="swap__range" type="range" min="0" max="100" value="50" aria-label="Vergleich: Cellini links, Garbati rechts">
+      </div>
+      <p class="caption swap__cap">{{abbnr:s7-cellini|Benvenuto Cellini, Perseus, 1545–1554, Florenz}} &nbsp;·&nbsp; {{abbnr:s7-garbati|Luciano Garbati, Medusa mit dem Haupt des Perseus, 2008}}</p>
+    </section>
+
+    <section class="section">
+      <div class="split">
+        <figure class="fig" data-reveal>
+          <img src="../media/bilder/s7-gericault.webp" alt="Gemälde: Schiffbrüchige drängen sich auf einem Floß in hoher See, einer schwenkt ein Tuch in Richtung Horizont." loading="lazy">
+          <figcaption><span class="abb">Abb. {{abb}}</span><b>Théodore Géricault, Das Floß der Medusa</b>, 1818/19, Louvre. {{credit:s7-gericault}}</figcaption>
+        </figure>
+        <div class="merk" data-reveal>
+          <span class="merk__label">Merkkasten · Falsche Medusa</span>
+          <p>Géricaults „Floß der Medusa“ (1818/19, Louvre) hat mit der Gorgone nur den Namen gemein: Es zeigt Überlebende der Fregatte Méduse, die am 2. Juli 1816 vor Mauretanien auf Grund lief.<a class="fn" href="fazit.html#q-sygic" data-quelle="Sygic Travel: The Raft of the Medusa" aria-label="Quelle: Sygic Travel">23</a><a class="fn" href="fazit.html#q-heidelberg-gericault" data-quelle="Universität Heidelberg: Géricault, Das Floß der Medusa" aria-label="Quelle: Universität Heidelberg">24</a></p>
+        </div>
+      </div>
+    </section>

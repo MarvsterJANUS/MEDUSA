@@ -73,5 +73,22 @@ window.MEDUSA_QUELLEN = {
   'goodreads-burton':  { gruppe: 'web', text: 'Goodreads: Jessie Burton’s feminist Medusa', url: 'https://www.goodreads.com/author_blog_posts/24318420-jessie-burton-s-feminist-medusa-flips-the-script-on-an-ancient-greek-myt' },
   'readingthepast':    { gruppe: 'web', text: 'Reading the Past: A monster reenvisioned (2023)', url: 'https://readingthepast.blogspot.com/2023/02/a-monster-reenvisioned-natalie-haynes.html' },
   'litcharts':         { gruppe: 'web', text: 'LitCharts: The Lightning Thief, Chapter 11', url: 'https://litcharts.com/lit/the-lightning-thief/chapter-11' },
-  'sparknotes':        { gruppe: 'web', text: 'SparkNotes: The Lightning Thief, Section 5', url: 'https://www.sparknotes.com/lit/lightning-thief/section5/' }
+  'sparknotes':        { gruppe: 'web', text: 'SparkNotes: The Lightning Thief, Section 5', url: 'https://www.sparknotes.com/lit/lightning-thief/section5/' },
+
+  // Η Kunst
+  'khm-rubens':        { gruppe: 'fach', text: 'Kunsthistorisches Museum Wien: Rubens und Snyders, Haupt der Medusa', url: 'https://khm.at/en/object/1626' },
+  'capitolini':        { gruppe: 'fach', text: 'Musei Capitolini: Gian Lorenzo Bernini, Büste der Medusa', url: 'https://museicapitolini.org/en/node/82220' },
+  'albertina':         { gruppe: 'fach', text: 'Albertina: Gustav Klimt, Beethovenfries (Digitale Publikation)', url: 'https://digitalepublikationen.albertina.at/groups/beethovenfries/results' },
+  'heidelberg-gericault': { gruppe: 'fach', text: 'Universität Heidelberg, Kunstchronik: Géricault, Das Floß der Medusa', url: 'https://journals.ub.uni-heidelberg.de/index.php/kb/article/view/80211/74169' },
+  'cuny-shelley':      { gruppe: 'fach', text: 'CUNY Manifold: On the Medusa of Leonardo da Vinci in the Florentine Gallery', url: 'https://cuny.manifoldapp.org/read/on-the-medusa-of-leonardo-da-vinci-in-the-florentine-gallery' },
+  'wiki-rubens':       { gruppe: 'web', text: 'Wikipedia: Medusa (Rubens)', url: 'https://en.wikipedia.org/wiki/Medusa_(Rubens)' },
+  'collector-caravaggio': { gruppe: 'web', text: 'The Collector: Why did Caravaggio paint Medusa?', url: 'https://www.thecollector.com/why-did-caravaggio-paint-medusa/' },
+  'beculture':         { gruppe: 'web', text: 'BeCulture: Caravaggios Medusa', url: 'https://www.beculture.it/en/wp-json/wp/v2/posts/19368' },
+  'smithsonian-garbati': { gruppe: 'web', text: 'Smithsonian Magazine: Controversial #MeToo Medusa statue unveiled', url: 'https://www.smithsonianmag.com/smart-news/controversial-metoo-medusa-statue-unveiled-180976048/' },
+  'dailybeast':        { gruppe: 'web', text: 'The Daily Beast: Medusa is back, standing tall and complicated in the #MeToo era', url: 'https://www.thedailybeast.com/medusa-is-back-standing-tall-and-complicated-in-the-metoo-era' },
+  'artnewspaper':      { gruppe: 'web', text: 'The Art Newspaper: #MeToo Medusa sculpture to be installed across from New York courthouse (2020)', url: 'https://www.theartnewspaper.com/2020/10/13/metoo-medusa-sculpture-to-be-installed-across-from-new-york-courthouse-where-harvey-weinstein-stood-trial' },
+  'artdaily':          { gruppe: 'web', text: 'Artdaily: How a Medusa sculpture from a decade ago became #MeToo art', url: 'https://artdaily.com/news/129187/How-a-Medusa-sculpture-from-a-decade-ago-became--MeToo-art' },
+  'collector-garbati': { gruppe: 'web', text: 'The Collector: How did Luciano Garbati reimagine Medusa?', url: 'https://www.thecollector.com/how-luciano-garbati-reimagine-medusa/' },
+  'dailyart':          { gruppe: 'web', text: 'DailyArt Magazine: #MeToo and the Medusa myth (u. a. Böcklin)', url: 'https://www.dailyartmagazine.com/metoo-and-the-medusa-myth/' },
+  'sygic':             { gruppe: 'web', text: 'Sygic Travel: The Raft of the Medusa', url: 'https://travel.sygic.com/en/poi/the-raft-of-the-medusa-poi:4088597' }
 };

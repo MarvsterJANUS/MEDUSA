@@ -170,6 +170,8 @@ function credit(key) {
   const c = CREDITS[key];
   if (!c) return '<span class="muted">[Bildnachweis folgt]</span>';
   const lic = /public domain/i.test(c.lizenz) ? 'gemeinfrei' : c.lizenz;
+  // Nicht von Commons (z. B. Pressefoto): Fotograf, Fundort und Rechte nennen
+  if (c.seite && !/commons.wikimedia/.test(c.seite)) return '<span class="muted">Foto: ' + c.kuenstler + ', via ' + (c.via || new URL(c.seite).hostname) + ', ' + lic + '</span>';
   const who = c.kuenstler && !/^unknown/i.test(c.kuenstler) ? c.kuenstler.replace(/\s*\(.*?\)\s*/g, ' ').trim() : '';
   const photo = /^(CC|GFDL)/i.test(lic) && who ? 'Foto: ' + who + ', ' : '';
   return '<span class="muted">' + photo + 'Wikimedia Commons, ' + lic + '</span>';

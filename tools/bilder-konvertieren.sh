@@ -25,3 +25,10 @@ w s4-korfu "scale=1600:-2" s4-korfu
 w s4-uebergang "scale=1400:-2" s4-uebergang
 # Ζ: Doré, Inferno IX (Furien) – Bildunterschrift abgeschnitten, warm abgedunkelt
 w s6-dore "crop=676:960:12:10,eq=gamma=0.82:contrast=1.12:brightness=-0.05,colorchannelmixer=rr=1.0:gg=0.93:bb=0.80,vignette=angle=PI/4.2" s6-dore 86
+# Η Kunst: Werke (längste Seite max. 1600 px)
+for k in s7-cellini s7-canova s7-bernini s7-klimt s7-gericault s7-rubens s7-uffizi s7-boecklin s7-garbati s7-garbati-ny; do
+  w $k "scale='if(gt(iw,ih),min(1600,iw),-2)':'if(gt(iw,ih),-2,min(1600,ih))'" $k 82
+done
+# Η Kunst: Vergleichsregler Cellini ↔ Garbati, gleich große Hochformate (4:5), dunkel abgestimmt
+w s7-cellini "crop=1920:2400:0:120,scale=1000:1250,curves=all='0/0 0.25/0.25 0.55/0.45 1/0.58',eq=contrast=1.12:gamma=0.97,vignette=angle=PI/3.8" s7-vergleich-cellini 84
+w s7-garbati "crop=560:700:320:40,scale=1000:1250,eq=gamma=0.95,vignette=angle=PI/4" s7-vergleich-garbati 84

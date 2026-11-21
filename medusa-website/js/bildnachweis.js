@@ -402,5 +402,273 @@ window.MEDUSA_BILDNACHWEIS = [
    "breite": 699,
    "hoehe": 1064
   }
+ },
+ {
+  "nr": 28,
+  "szene": "Η Kunst",
+  "titel": "Gorgo-Giebel von Korfu",
+  "key": "s4-korfu",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Gorgon at the Artemis temple in Corfu.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Gorgon_at_the_Artemis_temple_in_Corfu.jpg",
+   "titel": "Gorgon at the Artemis temple in Corfu",
+   "kuenstler": "Dr.K.",
+   "datum": "2003-01-01 01:07:22",
+   "lizenz": "CC BY-SA 4.0",
+   "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "credit": "Own work",
+   "breite": 2608,
+   "hoehe": 1952
+  }
+ },
+ {
+  "nr": 29,
+  "szene": "Η Kunst",
+  "titel": "Benvenuto Cellini, Perseus",
+  "key": "s7-cellini",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Perseus Medusa Cellini Lanzi Florence.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Perseus_Medusa_Cellini_Lanzi_Florence.jpg",
+   "titel": "Perseus Medusa Cellini Lanzi Florence",
+   "kuenstler": "Jebulon",
+   "datum": "2011-06-02",
+   "lizenz": "CC0",
+   "lizenzUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "credit": "Own work",
+   "breite": 2003,
+   "hoehe": 3594
+  }
+ },
+ {
+  "nr": 30,
+  "szene": "Η Kunst",
+  "titel": "Caravaggio, Medusa",
+  "key": "f-caravaggio",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Caravaggio - Medusa Uffizi - High quality.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_Medusa_Uffizi_-_High_quality.jpg",
+   "titel": "Caravaggio - Medusa Uffizi - High quality",
+   "kuenstler": "Caravaggio",
+   "datum": "2018-05-22",
+   "lizenz": "CC0",
+   "lizenzUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "credit": "Caravaggio",
+   "breite": 3600,
+   "hoehe": 3605
+  }
+ },
+ {
+  "nr": 31,
+  "szene": "Η Kunst",
+  "titel": "Peter Paul Rubens und Frans Snyders, Haupt der Medusa",
+  "key": "s7-rubens",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Peter Paul Rubens - The Head of Medusa - WGA20300.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_The_Head_of_Medusa_-_WGA20300.jpg",
+   "titel": "Head of Medusa title QS:P1476,en:\"Head of Medusa \"label QS:Len,\"Head of Medusa \"label QS:Lit,\"Medusa\"label QS:Lfr,\"Tête de Méduse\"label QS:Let,\"Medusa\"label QS:Lru,\"Голова Медузы\"label QS:Lde,\"Haupt der Medusa\"label QS:Lda,\"Medusas hoved\"label QS:Lro,\"Capul Medusei\"label QS:Lja,\"メドューサの頭部\"label QS:Larz,\"راس ميدوسا\"label QS:Lhe,\"ראשה של מדוזה\"label QS:Lnl,\"Hoofd van Medusa\"label QS:Lla,\"Medusa\"label QS:Lcs,\"Hlava Medúsy\"label QS:Lnb,\"Medusa\"label QS:Luk,\"Медуза\"label QS:Lmk,\"Медуза (Рубенс)\"",
+   "kuenstler": "Peter Paul Rubens / Attributed to Frans Snyders",
+   "datum": "between circa 1617 and circa 1618date QS:P571,+1617-00-00T00:00:00Z/8,P1319,+1617-00-00T00:00:00Z/9,P1326,+1618-00-00T00:00:00Z/9,P1480,Q5727902",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "1. Web Gallery of Art: Image Info about artworkwga QS:P11807,\"r/rubens/22mythol/29mythol\"2. Kunsthistorisches Museum Wien, Bilddatenbank.",
+   "breite": 1751,
+   "hoehe": 953
+  }
+ },
+ {
+  "nr": 32,
+  "szene": "Η Kunst",
+  "titel": "Flämischer Maler, Haupt der Medusa",
+  "key": "s7-uffizi",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Medusa uffizi.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Medusa_uffizi.jpg",
+   "titel": "Head of Medusa title QS:P1476,en:\"Head of Medusa \"label QS:Len,\"Head of Medusa \"label QS:Lit,\"Testa decapitata di medusa\"label QS:Lfr,\"Tête de Méduse\"label QS:Lde,\"Medusa / Das Haupt der Medusa\"label QS:Lnl,\"Hoofd van Medusa\"",
+   "kuenstler": "anonymous",
+   "datum": "1600",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "http://www.arca.net/uffizi/img/1479.jpg",
+   "breite": 1280,
+   "hoehe": 809
+  }
+ },
+ {
+  "nr": 33,
+  "szene": "Η Kunst",
+  "titel": "Gian Lorenzo Bernini, Büste der Medusa",
+  "key": "s7-bernini",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Medusa Bernini Musei Capitolini MC1166 n2.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Medusa_Bernini_Musei_Capitolini_MC1166_n2.jpg",
+   "titel": "Medusa Bernini Musei Capitolini MC1166 n2",
+   "kuenstler": "Jastrow (2006)",
+   "datum": "2013-05-22 10:57:14",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "Own work",
+   "breite": 1850,
+   "hoehe": 2300
+  }
+ },
+ {
+  "nr": 34,
+  "szene": "Η Kunst",
+  "titel": "Antonio Canova, Perseus",
+  "key": "s7-canova",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Perseus Canova Pio-Clementino Inv969.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Perseus_Canova_Pio-Clementino_Inv969.jpg",
+   "titel": "Perseuslabel QS:Lit,\"Perseo trionfante\"label QS:Lfr,\"Persée triomphant\"label QS:Lnl,\"Perseo trionfante\"label QS:Lru,\"Персей\"label QS:Lhi,\"पर्सियस\"label QS:Lpt,\"Perseu com a cabeça da Medusa\"label QS:Len,\"Perseus\"label QS:Les,\"Perseo\"",
+   "kuenstler": "Antonio Canova",
+   "datum": "circa 1800date QS:P571,+1800-00-00T00:00:00Z/9,P1480,Q5727902",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "Marie-Lan Nguyen (2009)",
+   "breite": 2537,
+   "hoehe": 2900
+  }
+ },
+ {
+  "nr": 35,
+  "szene": "Η Kunst",
+  "titel": "Arnold Böcklin, Medusa",
+  "key": "s7-boecklin",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Medusa.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Medusa.jpg",
+   "titel": "German: Medusa Medusalabel QS:Lru,\"Голова Медузы\"label QS:Lde,\"Medusenhaupt\"label QS:Len,\"Medusa\"",
+   "kuenstler": "Arnold Böcklin",
+   "datum": "circa 1878date QS:P571,+1878-00-00T00:00:00Z/9,P1480,Q5727902",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "Originally uploaded at en.wikipedia: 04:18, 5 March 2004 . . Perl",
+   "breite": 700,
+   "hoehe": 698
+  }
+ },
+ {
+  "nr": 36,
+  "szene": "Η Kunst",
+  "titel": "Edward Burne-Jones, Das unheilvolle Haupt",
+  "key": "s3-bj-09",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Edward Burne-Jones (1833-1898) - The Baleful Head - SOTAG , 108 - Southampton City Art Gallery.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Edward_Burne-Jones_(1833-1898)_-_The_Baleful_Head_-_SOTAG_,_108_-_Southampton_City_Art_Gallery.jpg",
+   "titel": "The Baleful Head title QS:P1476,en:\"The Baleful Head \"label QS:Len,\"The Baleful Head \"",
+   "kuenstler": "Edward Burne-Jones",
+   "datum": "",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "Art UK",
+   "breite": 1006,
+   "hoehe": 1200
+  }
+ },
+ {
+  "nr": 37,
+  "szene": "Η Kunst",
+  "titel": "Gustav Klimt, Beethovenfries (Die feindlichen Gewalten)",
+  "key": "s7-klimt",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Klimt - Die Gorgonen und Typhoeus.jpeg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Klimt_-_Die_Gorgonen_und_Typhoeus.jpeg",
+   "titel": "The Gorgons and Typheus.",
+   "kuenstler": "Gustav Klimt",
+   "datum": "1902date QS:P571,+1902-00-00T00:00:00Z/9",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "repro from artbook",
+   "breite": 5028,
+   "hoehe": 6840
+  }
+ },
+ {
+  "nr": 38,
+  "szene": "Η Kunst",
+  "titel": "Luciano Garbati, Medusa mit dem Haupt des Perseus",
+  "key": "s7-garbati",
+  "ki": false,
+  "nachweis": {
+   "datei": "luciano-garbati-medusa (Atelierfoto)",
+   "seite": "https://www.thecollector.com/how-luciano-garbati-reimagine-medusa/",
+   "titel": "Luciano Garbati, Medusa mit dem Haupt des Perseus, 2008",
+   "kuenstler": "Luciano Garbati, offizielle Website",
+   "datum": "2008",
+   "lizenz": "urheberrechtlich geschützt",
+   "lizenzUrl": "",
+   "credit": "Source: Luciano Garbati Official Website (via TheCollector)",
+   "breite": 1200,
+   "hoehe": 800,
+   "via": "TheCollector"
+  }
+ },
+ {
+  "nr": 39,
+  "szene": "Η Kunst",
+  "titel": "Benvenuto Cellini, Perseus, 1545–1554, Florenz",
+  "key": "s7-cellini",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:Perseus Medusa Cellini Lanzi Florence.jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:Perseus_Medusa_Cellini_Lanzi_Florence.jpg",
+   "titel": "Perseus Medusa Cellini Lanzi Florence",
+   "kuenstler": "Jebulon",
+   "datum": "2011-06-02",
+   "lizenz": "CC0",
+   "lizenzUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "credit": "Own work",
+   "breite": 2003,
+   "hoehe": 3594
+  }
+ },
+ {
+  "nr": 40,
+  "szene": "Η Kunst",
+  "titel": "Luciano Garbati, Medusa mit dem Haupt des Perseus, 2008",
+  "key": "s7-garbati",
+  "ki": false,
+  "nachweis": {
+   "datei": "luciano-garbati-medusa (Atelierfoto)",
+   "seite": "https://www.thecollector.com/how-luciano-garbati-reimagine-medusa/",
+   "titel": "Luciano Garbati, Medusa mit dem Haupt des Perseus, 2008",
+   "kuenstler": "Luciano Garbati, offizielle Website",
+   "datum": "2008",
+   "lizenz": "urheberrechtlich geschützt",
+   "lizenzUrl": "",
+   "credit": "Source: Luciano Garbati Official Website (via TheCollector)",
+   "breite": 1200,
+   "hoehe": 800,
+   "via": "TheCollector"
+  }
+ },
+ {
+  "nr": 41,
+  "szene": "Η Kunst",
+  "titel": "Théodore Géricault, Das Floß der Medusa",
+  "key": "s7-gericault",
+  "ki": false,
+  "nachweis": {
+   "datei": "File:JEAN LOUIS THÉODORE GÉRICAULT - La Balsa de la Medusa (Museo del Louvre, 1818-19).jpg",
+   "seite": "https://commons.wikimedia.org/wiki/File:JEAN_LOUIS_TH%C3%89ODORE_G%C3%89RICAULT_-_La_Balsa_de_la_Medusa_(Museo_del_Louvre,_1818-19).jpg",
+   "titel": "The Raft of the Medusa title QS:P1476,en:\"The Raft of the Medusa \"label QS:Len,\"The Raft of the Medusa \"label QS:Les,\"La balsa de la Medusa\"label QS:Lyue,\"美杜莎之筏\"label QS:Lhu,\"A Medúza tutaja\"label QS:Lfi,\"Medusan lautta\"label QS:Leu,\"Méduse ontziaren almadia\"label QS:Lbr,\"Le Radeau de la Méduse\"label QS:Lzh-hans,\"梅杜萨之筏\"label QS:Lca,\"El rai de la Medusa\"label QS:Lde-ch,\"Das Floss der Medusa\"label QS:Lde,\"Das Floß der Medusa\"label QS:Lqug,\"medusa pug andana\"label QS:Lbe,\"Плыт «Медузы»\"label QS:Lsr-ec,\"Сплав Медузе\"label QS:Lbg,\"Потъването на „Медуза“\"label QS:Lda,\"Medusas Tømmerflåde\"label QS:Lro,\"Pluta Meduzei\"label QS:Lzh-hk,\"梅杜薩之筏\"label QS:Lmk,\"Сплавот на Медуза\"label QS:Lzh,\"梅杜薩之筏\"label QS:Lsv,\"Medusas flotte\"label QS:Lfa,\"کلک مدوسا\"label QS:Lhe,\"רפסודת המדוזה\"label QS:Lla,\"Ratis Medusae\"label QS:Lzh-hant,\"梅杜薩之筏\"label QS:Lzh-cn,\"梅杜萨之筏\"label QS:Lko,\"메두사호의 뗏목\"label QS:Lhy,\"Մեդուզա լաստ\"label QS:Leo,\"La floso de la Meduzo\"label QS:Larz,\"طوافه قنديل البحر\"label QS:Lit,\"La zattera della Medusa\"label QS:Laz,\"Meduza salı\"label QS:Lfr,\"Le Radeau de la Méduse\"label QS:Lcs,\"Vor Medúzy\"label QS:Lhr,\"Splav Meduze\"label QS:Lnn,\"Medusas flåte\"label QS:Ltr,\"Medusa'nın Salı\"label QS:Luk,\"Пліт Медузи\"label QS:Llfn,\"La balsa de Medusa\"label QS:Lsr,\"Сплав Медузе\"label QS:Lvi,\"Chiếc bè của chiến thuyền Méduse\"label QS:Lmt,\"Iċ-Ċattra ta' Medusa\"label QS:Llv,\"Medūzas plosts\"label QS:Lbjn,\"The Raft of the Medusa\"label QS:Llt,\"Medūzos plaustas\"label QS:Lsl,\"Splav Meduze\"label QS:Ltl,\"The Raft of the Medusa\"label QS:Lpt,\"A Balsa da Medusa\"label QS:Lzh-sg,\"梅杜萨之筏\"label QS:Lid,\"The Raft of the Medusa\"label QS:Lpl,\"Tratwa Meduzy\"label QS:Lnb,\"«Medusas flåte»\"label QS:Lzh-tw,\"梅杜薩之筏\"label QS:Lga,\"Rafta an Meadúsa\"label QS:Lnl,\"Het vlot van de Medusa\"label QS:Lsh,\"Splav Meduze\"label QS:Lru,\"Плот «Медузы»\"label QS:Lgl,\"A Balsa da Medusa\"label QS:Lar,\"طوافة قنديل البحر\"label QS:Lel,\"Η Σχεδία της Μέδουσας\"label QS:Lja,\"メデューズ号の筏\"",
+   "kuenstler": "Théodore Géricault",
+   "datum": "1819",
+   "lizenz": "Public domain",
+   "lizenzUrl": "",
+   "credit": "Unknown sourceUnknown source",
+   "breite": 5872,
+   "hoehe": 4008
+  }
  }
 ];
