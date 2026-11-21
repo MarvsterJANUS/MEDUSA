@@ -43,7 +43,7 @@
       for (let i = 0; i < marks.length; i++) if (t >= marks[i]) k = i;
       if (k !== shown && cur) { shown = k; cur.textContent = String(k + 1).padStart(2, '0'); }
     });
-    ScrollTrigger.create({
+    const st = ScrollTrigger.create({
       trigger: '.stack__pin',
       start: 'top top',
       end: () => '+=' + Math.round(window.innerHeight * (n - 1) * 1.15),
@@ -51,6 +51,12 @@
       scrub: 0.6,
       animation: tl,
       invalidateOnRefresh: true
+    });
+
+    // Tastatur: Fokus in einer Karte → Stapel bis zu dieser Karte durchblättern
+    M.focusTargets.push({
+      root: document.querySelector('.stack__pin'),
+      y: (el) => { const k = cards.findIndex((c) => c.contains(el)); return k < 0 ? null : st.start + ((marks[k] + 0.35) / tl.duration()) * (st.end - st.start); }
     });
 
     // Erste Karte: Text baut sich beim Hineinscrollen auf

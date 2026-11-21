@@ -14,6 +14,7 @@
     gsap.set(steps[0], { opacity: 1, y: 0 });
 
     const tl = gsap.timeline({ defaults: { ease: 'none' } });
+    const marks = [0.2];   // Zeitpunkte, an denen Stufe i voll zu sehen ist (für die Tastatur)
     tl.to({}, { duration: 0.5 });
     for (let i = 1; i < faces.length; i++) {
       tl.fromTo(faces[i], { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 1 }, '>')
@@ -21,12 +22,26 @@
         .to(steps[i - 1], { opacity: 0, y: -30, duration: 0.45 }, '<')
         .to(steps[i], { opacity: 1, y: 0, duration: 0.45 }, '<0.55')
         .to({}, { duration: 0.6 });
+      marks.push(tl.duration() - 0.3);
     }
     tl.fromTo('.morph__line i', { scaleX: 0 }, { scaleX: 1, duration: tl.duration() }, 0);
+    // aktuelle Stufe merken (nur sie ist klickbar)
+    steps[0].classList.add('is-cur');
+    tl.eventCallback('onUpdate', () => {
+      const t = tl.time();
+      let k = 0;
+      for (let i = 0; i < marks.length; i++) if (t >= marks[i] - 0.45) k = i;
+      steps.forEach((x, i) => x.classList.toggle('is-cur', i === k));
+    });
 
-    ScrollTrigger.create({
+    const st = ScrollTrigger.create({
       trigger: '.morph__pin', start: 'top top', end: '+=260%',
       pin: true, scrub: 0.6, animation: tl, invalidateOnRefresh: true
+    });
+    // Tastatur: Fokus in einer Stufe → zur passenden Stelle der Verwandlung scrollen
+    M.focusTargets.push({
+      root: document.querySelector('.morph__pin'),
+      y: (el) => { const k = steps.findIndex((s) => s.contains(el)); return k < 0 ? null : st.start + (marks[k] / tl.duration()) * (st.end - st.start); }
     });
 
     /* ---------- Fundorte ---------- */

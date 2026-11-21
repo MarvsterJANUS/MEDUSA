@@ -1,6 +1,6 @@
 // Erzeugt die neun Szenen-Seiten aus einer gemeinsamen Vorlage.
 // Aufruf: node tools/make-szenen.js
-// Inhalt einer Szene: tools/inhalte/<id>.html (fehlt er, kommt der Platzhalter).
+// Inhalt einer Szene: tools/inhalte/<id>.html (fehlt er, bleibt die Szene leer – die Ausgabe warnt).
 // Skript für den großen Moment: medusa-website/js/szenen/<id>.js (wird automatisch eingebunden).
 const fs = require('fs');
 const path = require('path');
@@ -13,7 +13,7 @@ const DATA = (() => { const ctx = { window: {} }; vm.runInNewContext(fs.readFile
 const bildVon = (id) => (DATA.find((x) => x.id === id) || {}).bild;
 const vorschau = (src, ghost) => src
   ? '<span class="motif motif--bild"><img class="motif__img" src="' + src + '" alt="" loading="lazy" decoding="async"></span>'
-  : '<span class="motif"><span class="motif__ghost">' + ghost + '</span><span class="motif__label">Platzhalter · Vorschaubild folgt</span></span>';
+  : '<span class="motif"><span class="motif__ghost">' + ghost + '</span></span>';
 
 const S = [
   { id: 'herkunft', b: 'Α', t: 'Herkunft', teaser: 'Drei Schwestern am Rand der Welt – nur eine von ihnen war sterblich.',
@@ -131,19 +131,6 @@ function page(s, i) {
     </section>
 
 ${inhalt(s)}
-    <!-- PLATZHALTER-START -->
-    <section class="scene-body">
-      <div class="placeholder-box" data-reveal>
-        <span class="placeholder-box__tag">Platzhalter · Session ${s.session}</span>
-        <h2>Hier entsteht der große Moment dieser Szene.</h2>
-        <dl>
-          <dt>Inhalt</dt><dd>${s.inhalt}</dd>
-          <dt>Großer Moment</dt><dd>${s.moment}</dd>
-          <dt>Assets</dt><dd>${s.assets}</dd>
-        </dl>
-      </div>
-    </section>
-    <!-- PLATZHALTER-ENDE -->
 
     <nav class="next" aria-label="Weiter">
       ${nextBlock}
@@ -245,10 +232,9 @@ function abspann() {
 
 S.forEach((s, i) => {
   let html = page(s, i);
-  if (inhalt(s)) html = html.replace(/\n    <!-- PLATZHALTER-START -->[\s\S]*?<!-- PLATZHALTER-ENDE -->\n/, '\n');
   if (html.includes('{{abspann}}')) html = html.replace('{{abspann}}', abspann());
   fs.writeFileSync(path.join(OUT, s.id + '.html'), html, 'utf8');
-  console.log('geschrieben:', s.id + '.html', inhalt(s) ? '(Inhalt)' : '(Platzhalter)');
+  console.log('geschrieben:', s.id + '.html', inhalt(s) ? '' : '(OHNE INHALT – tools/inhalte/' + s.id + '.html fehlt)');
 });
 fs.writeFileSync(path.join(OUT, '..', 'js', 'bildnachweis.js'),
   '/* automatisch erzeugt von tools/make-szenen.js – nicht von Hand ändern */\nwindow.MEDUSA_BILDNACHWEIS = ' + JSON.stringify(ABB_LIST, null, 1) + ';\n', 'utf8');

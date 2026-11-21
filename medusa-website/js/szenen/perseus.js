@@ -24,6 +24,18 @@
       }
     });
 
+    // Tastatur: Fokus in einer Station → Fries so weit fahren, dass sie zu sehen ist
+    M.focusTargets.push({
+      root: pin,
+      y: (el) => {
+        const st = move.scrollTrigger;
+        const item = el.closest('.station, .frieze__intro');
+        if (!item || !st) return null;
+        const x = Math.max(0, Math.min(dist(), item.offsetLeft - window.innerWidth * 0.18));
+        return st.start + (dist() ? x / dist() : 0) * (st.end - st.start) + 2;
+      }
+    });
+
     // Parallax: Bild im Rahmen langsamer, Nummer schneller als die Station
     gsap.utils.toArray('.station').forEach((st) => {
       const sc = { containerAnimation: move, trigger: st, start: 'left right', end: 'right left', scrub: true };

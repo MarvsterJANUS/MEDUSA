@@ -238,7 +238,7 @@ html::after {
 .menu__item a[aria-current="page"] .menu__hint { opacity: 1; color: var(--gold); }
 .menu__foot { margin-top: var(--s4); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--asche); }
 
-/* ---------- Motiv-Platzhalter (bis die echten Szenenbilder da sind) ---------- */
+/* ---------- Motiv (Hintergrund in Menü, Kapitel-Liste und Weiter-Vorschau) ---------- */
 .motif {
   background:
     radial-gradient(ellipse 60% 70% at 22% 18%, rgba(184,120,58,.30), transparent 60%),
@@ -248,11 +248,6 @@ html::after {
 .motif__ghost {
   position: absolute; right: 4vw; bottom: -6vw;
   font-family: var(--f-greek); font-size: 48vw; line-height: 1; color: rgba(232,228,220,.045);
-}
-.motif__label {
-  position: absolute; left: var(--gutter); bottom: var(--s4);
-  font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(201,164,106,.75);
-  border: 1px dashed rgba(201,164,106,.45); padding: 4px 10px;
 }
 /* Echtes Motivbild: füllt die Fläche, Schrift davor bleibt durch die Abdunklung links lesbar */
 .motif--bild { background: var(--nacht); overflow: hidden; }
@@ -526,17 +521,6 @@ html::after {
 .scene-title__hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--asche); }
 
 .scene-body { padding: var(--s7) var(--gutter); }
-.placeholder-box {
-  max-width: 1100px; margin: 0 auto;
-  border: 1px dashed rgba(201,164,106,.45); padding: clamp(24px, 4vw, 64px);
-  display: grid; gap: var(--s4);
-}
-.placeholder-box__tag { justify-self: start; font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--nacht); background: var(--gold); padding: 4px 10px; }
-.placeholder-box h2 { font-family: var(--f-serif); font-size: clamp(32px, 3.4vw, 52px); line-height: 1.05; }
-.placeholder-box p { max-width: 68ch; color: rgba(232,228,220,.82); }
-.placeholder-box dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin: 0; font-size: 16px; }
-.placeholder-box dt { color: var(--gold); font-weight: 600; }
-.placeholder-box dd { margin: 0; color: rgba(232,228,220,.82); }
 
 /* Weiter-Link */
 .next { padding: var(--s7) var(--gutter) var(--s6); border-top: 1px solid rgba(142,147,143,.18); }
@@ -580,8 +564,6 @@ html::after {
   .menu__title { font-size: clamp(28px, 4.4vh, 44px); }
   .next__link { grid-template-columns: 1fr; }
   .scene-title__letter { top: 32%; font-size: 90vw; }
-  .placeholder-box dl { grid-template-columns: 1fr; gap: 2px; }
-  .placeholder-box dd { margin-bottom: 10px; }
 }
 
 /* ---------- Bewegung reduzieren ---------- */
@@ -647,16 +629,6 @@ html.reduced-motion::before { display: none; }
 .fig figcaption b, .caption b { color: var(--marmor); font-weight: 500; }
 .abb { color: var(--gold); font-weight: 600; margin-right: 6px; }
 
-/* KI-Bild-Platzhalter */
-.ki-ph {
-  position: relative; display: grid; place-items: center; overflow: hidden; aspect-ratio: 16 / 9;
-  background:
-    radial-gradient(ellipse 55% 65% at 22% 16%, rgba(184,120,58,.26), transparent 62%),
-    radial-gradient(ellipse 60% 60% at 70% 80%, rgba(28,32,30,.95), transparent 70%), #0a0c0b;
-  border: 1px dashed rgba(201,164,106,.4);
-}
-.ki-ph__label { position: relative; text-align: center; padding: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(201,164,106,.85); line-height: 1.7; }
-.ki-ph__label b { display: block; font-family: var(--f-serif); font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--marmor); font-weight: 400; }
 
 /* Weiterlesen-Knopf + Panel */
 .more-btn {
@@ -748,3 +720,6 @@ html.reduced-motion::before { display: none; }
 @media (max-width: 700px) { .gestalt__words li { white-space: normal; font-size: 14.5vw; } }
 
 .panel a:not(.fn), .prose a:not(.fn) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Die Hülle des fixierten Films liegt über dem Anfang der Kapitel-Liste – Klicks durchlassen */
+.pin-spacer:has(> .hero) { pointer-events: none; }

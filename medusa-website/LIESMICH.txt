@@ -2,16 +2,29 @@ MEDUSA – digitale Ausstellung
 =============================
 
 Öffnen: Doppelklick auf index.html (funktioniert ohne Internet).
-Empfohlen: aktueller Chrome, Edge oder Firefox.
+Empfohlen: aktueller Chrome, Edge, Firefox oder Safari.
 
 Bedienung
-- Startseite: Scrollen spult den Film vor und zurück.
-- Oben rechts „Menü“: alle neun Szenen Α–Ω.
-- Am Ende jeder Szene führt „Weiter“ zur nächsten.
-- Esc schließt das Menü.
+- Startseite: Scrollen spult den Film vor und zurück. Die Buttons im Film
+  führen direkt in die passende Szene, „Alle Kapitel“ öffnet das Menü.
+- Oben rechts „Menü“: Startseite und alle neun Szenen Α–Ω.
+- Am Ende jeder Szene führt „Weiter“ zur nächsten, „Zurück“ zur vorigen.
+- Hochgestellte Zahlen sind Fußnoten: Überfahren zeigt die Quelle,
+  ein Klick springt zum Quellenverzeichnis im Abspann (Ω Fazit).
+- „Weiterlesen“ öffnet Vertiefungen; Esc schließt Menü, Panels und Werkblätter.
+- Alles ist auch mit der Tastatur bedienbar (Tab, Enter, Esc, Pfeiltasten).
 
-Hinweis: Mit der Systemeinstellung „Bewegung reduzieren“ werden
-alle Animationen abgeschaltet; die Inhalte bleiben vollständig lesbar.
+Die neun Szenen
+  Α Herkunft · Β Mythos · Γ Perseus · Δ Schutzzeichen · Ε Deutungen
+  Ζ Literatur · Η Kunst · Θ Heute · Ω Fazit (mit Abspann: Glossar,
+  Bildnachweis, Quellen)
 
-Die Startseiten-Bilder und der Film sind KI-generiert.
-Quellen und Bildnachweis stehen im Abspann der Szene Ω (Fazit).
+Hinweise
+- Mit der Systemeinstellung „Bewegung reduzieren“ werden alle Animationen
+  abgeschaltet; die Inhalte bleiben vollständig lesbar.
+- Die Startseiten-Bilder, der Film, mehrere Szenenbilder und das
+  Augen-Video im Fazit sind KI-generiert und im Bildnachweis gekennzeichnet.
+- Echte Kunstwerke stammen überwiegend von Wikimedia Commons; geschützte
+  Fotos sind mit Fundort und Rechteinhaber genannt.
+- Bildraten-Anzeige zum Testen: „?fps“ an die Adresse anhängen,
+  z. B. index.html?fps

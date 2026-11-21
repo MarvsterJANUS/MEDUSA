@@ -8,7 +8,7 @@
 .v-stage { position: relative; width: min(100%, 70vh); aspect-ratio: 1 / 1; }
 .v-img { position: absolute; inset: 0; opacity: 0; will-change: opacity, transform; }
 .v-img[data-v="0"] { opacity: 1; }
-.v-img img, .v-img .ki-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; aspect-ratio: auto; }
+.v-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; aspect-ratio: auto; }
 .v-img .v-c, .v-img[data-v="0"] img { box-shadow: 0 40px 120px rgba(0,0,0,.6); }
 .v-s { opacity: 0; }
 /* Caravaggio ist rund freigestellt: runder Schatten statt Kasten */
@@ -363,3 +363,17 @@ body[data-szene="fazit"]:not(.is-farbig) { --gold: #8E938F; }
   .credits__glossar { grid-template-columns: 1fr; gap: 4px; }
   .credits__glossar dt { text-align: left; margin-top: 12px; }
 }
+/* Δ: Nur die aktuelle Verwandlungsstufe ist klickbar (die anderen liegen unsichtbar darüber) */
+.morph__step { pointer-events: none; }
+.morph__step.is-cur { pointer-events: auto; z-index: 2; }
+.reduced-motion .morph__step { pointer-events: auto; }
+
+/* Fixierte Bühnen sind keine Scroll-Container: Sonst verschiebt der Browser beim Fokussieren
+   (Tab) den Inhalt darin und Text rutscht aus dem Bild. overflow: clip schneidet ab, ohne zu scrollen. */
+.stack__pin, .card, .frieze, .frieze__pin, .morph__pin, .dante__pin, .augen__pin { overflow: clip; }
+/* „Bewegung reduzieren“: Fries als Liste untereinander statt seitlich (sonst unerreichbar) */
+.reduced-motion .frieze, .reduced-motion .frieze__pin { height: auto; overflow: visible; }
+.reduced-motion .frieze__track { flex-direction: column; align-items: flex-start; gap: var(--s6); padding: var(--s6) var(--gutter); transform: none !important; }
+.reduced-motion .station__no, .reduced-motion .station__img img, .reduced-motion .station__text { transform: none !important; opacity: 1 !important; }
+.reduced-motion .station__img img { left: 0; width: 100%; }
+.reduced-motion .frieze__bar { display: none; }

@@ -57,7 +57,7 @@
     });
   }
 
-  /* ---------- Motiv-Platzhalter ---------- */
+  /* ---------- Motiv: Bild aus media/motive, sonst nur der große Buchstabe ---------- */
   function motifEl(s, cls) {
     const d = document.createElement('div');
     d.className = 'motif ' + (cls || '');
@@ -68,8 +68,7 @@
       d.innerHTML = '<img class="motif__img" src="' + base + 'media/motive/' + s.bild + '.webp" alt="" loading="lazy" decoding="async">';
       return d;
     }
-    d.innerHTML = '<span class="motif__ghost">' + (s ? s.b : 'Μ') + '</span>' +
-      '<span class="motif__label">Platzhalter · Motiv ' + (s ? s.motiv : '') + ' folgt</span>';
+    d.innerHTML = '<span class="motif__ghost">' + (s ? s.b : 'Μ') + '</span>';
     return d;
   }
   M.motifEl = motifEl;
@@ -132,7 +131,6 @@
     ol.className = 'menu__list';
     items.forEach((it) => {
       const m = motifEl(it.s, 'menu__motif');
-      if (!it.s) m.querySelector('.motif__label').textContent = '';
       bg.appendChild(m);
       const li = document.createElement('li');
       li.className = 'menu__item';
@@ -539,6 +537,60 @@
       });
     }
     M.initReveals = initReveals;
+    initFocusScroll();
+    initFps();
+  }
+
+  /* ---------- Tastatur: fokussierte Elemente immer sichtbar machen ----------
+     Fixierte Szenen (Kartenstapel, Verwandlung, Fries) melden über M.focusTargets, an welcher
+     Scrollposition ein Element zu sehen ist: { root: Element, y: (el) => Scrollposition }. */
+  M.focusTargets = [];
+  function initFocusScroll() {
+    let keyboard = false;
+    document.addEventListener('keydown', (e) => { if (e.key === 'Tab') keyboard = true; });
+    document.addEventListener('pointerdown', () => { keyboard = false; });
+    document.addEventListener('focusin', (e) => {
+      const el = e.target;
+      if (!keyboard || !el || el === body || menuOpen) return;
+      if (el.closest('.menu, .panel, .werkblatt, .site-header, .transition, .hero')) return;   // eigene Logik bzw. fest im Bild
+      // noch nicht eingeblendete Inhalte sofort zeigen
+      const rv = el.closest('[data-reveal], .zeit__item, .tile, .ov-item');
+      if (rv && +getComputedStyle(rv).opacity < 0.5) gsap.to(rv, { opacity: 1, y: 0, duration: 0.4, overwrite: 'auto' });
+      const t = M.focusTargets.find((x) => x.root.contains(el));
+      if (t) { const y = t.y(el); if (y != null) M.scrollTo(Math.max(0, y), { duration: 0.7 }); return; }
+      const r = el.getBoundingClientRect();
+      if (r.top < (header ? header.offsetHeight : 80) + 16 || r.bottom > window.innerHeight - 24) {
+        M.scrollTo(Math.max(0, scrollY() + r.top - window.innerHeight * 0.35), { duration: 0.7 });
+      }
+    });
+  }
+
+  /* ---------- Bildraten-Anzeige zum Testen: index.html?fps (bleibt über Seitenwechsel aktiv, ?fps=0 schaltet ab) ---------- */
+  function initFps() {
+    const q = new URLSearchParams(location.search).get('fps');
+    try {
+      if (q === '0') sessionStorage.removeItem('medusa-fps');
+      else if (q !== null) sessionStorage.setItem('medusa-fps', '1');
+      if (sessionStorage.getItem('medusa-fps') !== '1') return;
+    } catch (e) { if (q === null || q === '0') return; }
+    const box = document.createElement('div');
+    box.setAttribute('aria-hidden', 'true');
+    box.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:100000;padding:8px 12px;font:600 12px/1.4 ui-monospace,Consolas,monospace;color:#0D0F0E;background:#C9A46A;border-radius:4px;pointer-events:none;white-space:pre';
+    document.body.appendChild(box);
+    let frames = 0, worst = 0, slow = 0, last = performance.now(), t0 = last;
+    const tick = (t) => {
+      const dt = t - last; last = t; frames++;
+      if (dt > worst) worst = dt;
+      if (dt > 34) slow++;                       // langsamer als ~30 fps = sichtbares Ruckeln
+      if (t - t0 >= 1000) {
+        const fps = Math.round(frames * 1000 / (t - t0));
+        box.textContent = fps + ' fps  · schlechtestes Bild ' + Math.round(worst) + ' ms · Ruckler ' + slow;
+        box.style.background = fps >= 55 ? '#C9A46A' : fps >= 40 ? '#d89a3c' : '#c0533a';
+        frames = 0; worst = 0; slow = 0; t0 = t;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   document.addEventListener('DOMContentLoaded', boot);
