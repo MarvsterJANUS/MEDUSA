@@ -1,17 +1,186 @@
-/* Druckansicht – Grundgerüst. Vollständiger PDF-Export folgt in Session 4. */
-@page { size: A4 portrait; margin: 20mm; }
-html, body { background: #E8E4DC !important; color: #0D0F0E !important; }
-html::before, html::after,
-.site-header, .menu, .progress-snake, .cursor, .loader, .transition,
-.hero__canvas, .hero__dust, .hero__flash, .hero__shield, .hero__hint, .hero__beam, .hero__shade, .skip-link { display: none !important; }
-.hero, .hero__stage { height: auto !important; background: none !important; }
-.hero__static { display: block !important; position: static !important; width: 100%; height: auto; }
-.hero__teaser-list { display: block !important; }
-.hero__teasers, .overview__bg { display: none !important; }
-.hero__intro, .hero__motto { position: static !important; opacity: 1 !important; transform: none !important; visibility: visible !important; }
-.hero__word { color: #0D0F0E !important; background: none !important; -webkit-text-fill-color: #0D0F0E; filter: none !important; font-size: 72pt !important; }
-* { opacity: 1 !important; visibility: visible !important; }
-a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
-.scene-title { min-height: 0 !important; page-break-before: always; }
-img { page-break-inside: avoid; }
-.namefield__name { color: #0D0F0E !important; }
+/* Druckansicht / PDF (tools/pdf-export.js): A4, hell, alle Momente im Endzustand.
+   html.druck setzt das Export-Skript (Panels eingesetzt, Werkblätter in Reihe, Anmerkungen am Ende). */
+@page { size: A4; margin: 18mm 18mm 20mm; }
+
+:root {
+  --nacht: #FFFFFF; --stein: #F3F1EC; --marmor: #141615; --asche: #686D69;
+  --gold: #9A7A45; --bernstein: #8A5A2B;
+  --bg: #FFFFFF; --fg: #141615; --muted: #686D69; --accent: #9A7A45;
+  --gutter: 0px; --header-h: 0px;
+  --s5: 7mm; --s6: 9mm; --s7: 12mm;
+}
+html, body { background: #fff !important; color: var(--fg) !important; font-size: 10pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html::before, html::after { display: none !important; }
+body { overflow: visible !important; }
+main { display: block; }
+
+/* Bedienelemente & Effekte weg */
+.site-header, .menu, .menu-backdrop, .progress-snake, .cursor, .cursor-ring, .loader, .transition, .tr-letter, .skip-link,
+.scene-title__hint, .scene-title__letter, .hero__hint-line, .next, .panel-backdrop, .panel__close, .werkblatt-back, .werkblatt__close,
+.more-btn, .fps, button, [data-print="aus"] { display: none !important; }
+
+/* Pins & Bühnen: normaler Fluss */
+.pin-spacer { height: auto !important; padding: 0 !important; width: auto !important; inset: auto !important; }
+[style*="position: fixed"] { position: static !important; }
+
+/* Grundtypografie */
+.section, .section--tight { padding: 7mm 0 !important; }
+.prose { max-width: none; }
+.prose p, p { orphans: 3; widows: 3; }
+h1, h2, h3, .h2, .lead, .kicker, .eyebrow { break-after: avoid; }
+.h2 { font-size: 26pt; line-height: 1.05; margin-bottom: 4mm; }
+.lead { font-size: 17pt; line-height: 1.22; max-width: none; }
+.kicker { font-size: 8pt; margin-bottom: 2.5mm; }
+.split { grid-template-columns: 1fr !important; gap: 5mm !important; }
+figure, img, .figure { break-inside: avoid; }
+img { max-width: 100%; height: auto; }
+figcaption { font-size: 7.5pt; line-height: 1.45; color: var(--muted); margin-top: 1.5mm; }
+a { color: inherit; text-decoration: none; }
+.fn { font-size: .7em; vertical-align: super; line-height: 0; color: var(--gold); margin-left: 1px; }
+[data-reveal], .reveal, .split-line, .line, .word, .char { opacity: 1 !important; transform: none !important; visibility: visible !important; clip-path: none !important; }
+
+/* Szenen-Kopf */
+.scene-title { min-height: 0 !important; height: auto !important; padding: 0 0 8mm !important; display: block !important; border-bottom: .3mm solid #D9D4CA; margin-bottom: 4mm; }
+.scene-title::before { display: none !important; }
+.scene-title__eyebrow { margin-bottom: 3mm; }
+.scene-title__name { font-size: 54pt; line-height: .95; }
+.scene-title .motto { margin-top: 7mm; max-width: none !important; }
+.motto blockquote { font-size: 20pt; line-height: 1.12; }
+.motto__de { font-size: 11.5pt; }
+.motto figcaption { font-size: 7.5pt; }
+
+/* Exkurse (Weiterlesen-Panels) */
+.panel.exkurs { position: static !important; transform: none !important; display: block !important; width: auto !important; height: auto !important; max-height: none !important; overflow: visible !important;
+  inset: auto !important; visibility: visible !important; opacity: 1 !important; background: #F6F3EE !important; color: var(--fg) !important;
+  border: 0 !important; border-left: .8mm solid var(--gold) !important; padding: 5mm 6mm !important; margin: 5mm 0 !important; box-shadow: none !important; break-inside: avoid; }
+.panel.exkurs::before { content: "Exkurs"; display: block; font-family: var(--f-display); font-weight: 700; font-size: 7.5pt; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 2mm; }
+.panel.exkurs h2 { font-family: var(--f-serif); font-weight: 400; font-size: 17pt; line-height: 1.1; margin-bottom: 2.5mm; }
+.panel.exkurs h3 { font-family: var(--f-serif); font-weight: 400; font-size: 12.5pt; color: var(--gold); margin: 4mm 0 1mm; }
+.panel.exkurs p + p { margin-top: .7em; }
+
+/* Anmerkungen */
+.anmerkungen { break-before: auto; margin-top: 10mm; padding-top: 5mm; border-top: .3mm solid #D9D4CA; font-size: 8pt; line-height: 1.45; color: #3A3E3B; }
+.anmerkungen h2 { font-family: var(--f-display); font-weight: 700; font-size: 8pt; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 3mm; }
+.anmerkungen ol { columns: 2; column-gap: 8mm; padding-left: 5mm; }
+.anmerkungen li { break-inside: avoid; margin-bottom: 1mm; }
+.anmerkungen li::marker { color: var(--gold); font-weight: 600; }
+.anmerkungen__hinweis { margin-top: 3mm; color: var(--muted); font-size: 7.5pt; }
+
+/* Bilder: keine Masken/Nebel, nichts über den Seitenumbruch */
+* { -webkit-mask-image: none !important; mask-image: none !important; }
+.fog::before, .fog::after, [data-fog]::before, [data-fog]::after { display: none !important; }
+.fig, .druck-bild { break-inside: avoid; margin: 4mm 0; }
+.fig img, .druck-bild img { width: 100%; max-height: 120mm; object-fit: contain; object-position: left center; }
+
+/* Α Herkunft: Stammbaum, Gestalt */
+.tree__pin { height: auto !important; min-height: 0 !important; padding: 4mm 0 !important; display: block !important; overflow: visible !important; }
+.tree__kicker { position: static !important; }
+.tree__svg { max-height: 150mm !important; width: 100% !important; }
+.tree__svg--tall { display: none !important; }
+.tree__svg:not(.tree__svg--tall) { display: block !important; }
+.tree__note { position: static !important; font-size: 15pt; margin-top: 3mm; text-align: left; }
+.gestalt__words { margin: 3mm 0 5mm; }
+.gestalt__words li { font-size: 34pt !important; line-height: .95; white-space: normal; }
+
+/* Β Mythos: Fassungen untereinander, Bild bei der Fassung */
+.versions { display: block !important; padding: 0 !important; }
+.version { min-height: 0 !important; padding: 6mm 0 !important; max-width: none !important; display: block !important; break-before: auto; border-top: .3mm solid #D9D4CA; }
+.version__no { font-size: 30pt; color: rgba(154,122,69,.45) !important; margin-bottom: 1mm; }
+.version__title { font-size: 22pt; }
+.version .druck-bild img { max-height: 85mm; width: auto; }
+
+/* Γ Perseus: Fries als Folge, Spiegel als Bild */
+.frieze, .frieze__pin { height: auto !important; overflow: visible !important; display: block !important; }
+.frieze__track { display: block !important; padding: 0 !important; transform: none !important; }
+.frieze__intro { width: auto !important; margin-bottom: 4mm; }
+.frieze__bar { display: none !important; }
+.station { display: grid !important; grid-template-columns: 62mm 1fr !important; gap: 6mm !important; align-items: start !important; padding: 4mm 0; border-top: .3mm solid #D9D4CA; break-inside: avoid; }
+.station__img { height: auto !important; aspect-ratio: auto !important; overflow: visible !important; background: none !important; }
+.station__img img { position: static !important; width: 100% !important; height: auto !important; transform: none !important; }
+.station__no { position: static !important; display: block; font-size: 16pt !important; color: var(--gold) !important; transform: none !important; margin-bottom: 1mm; }
+.station__text h3 { font-size: 15pt; margin-bottom: 1.5mm; }
+.station__text p { font-size: 9.5pt; }
+.mirror-stage { height: auto !important; background: none !important; overflow: visible !important; padding: 6mm 0; text-align: center; break-inside: avoid; }
+.mirror-stage__hint { position: static !important; padding: 0 !important; }
+.mirror-stage__hint .muted { display: none; }
+.mirror { position: relative !important; inset: auto !important; transform: none !important; margin: 6mm auto 3mm !important; --d: 80mm; width: 80mm !important; height: 80mm !important; border: .6mm solid var(--gold); }
+.mirror__inner { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; transform: none !important; }
+.mirror-stage__cap { position: static !important; }
+.station { grid-template-rows: auto 1fr; }
+.station__img { grid-column: 1; grid-row: 1 / span 2; width: 100% !important; }
+.station__no { grid-column: 2; grid-row: 1; }
+.station__text { grid-column: 2; grid-row: 2; }
+.merk { break-inside: avoid; }
+
+/* Δ Schutzzeichen: drei Gesichter nebeneinander, Stufen untereinander */
+.morph__pin { height: auto !important; display: block !important; padding: 4mm 0 !important; overflow: visible !important; }
+.morph__stage { width: 100% !important; aspect-ratio: auto !important; display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-bottom: 5mm; }
+.morph__face { position: static !important; opacity: 1 !important; transform: none !important; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1; filter: none !important; }
+.morph__steps { min-height: 0 !important; }
+.morph__step { position: static !important; transform: none !important; opacity: 1 !important; max-width: none !important; padding: 3mm 0; border-top: .3mm solid #D9D4CA; break-inside: avoid; }
+.morph__step .giant { font-size: 26pt !important; }
+.morph__line { display: none !important; }
+
+/* Ε Deutungen: Karten als Folge (Bild + Text) */
+.stack, .stack__pin { height: auto !important; overflow: visible !important; background: none !important; }
+.stack__count, .card__shade, .card__dim { display: none !important; }
+.card { position: relative !important; inset: auto !important; transform: none !important; height: auto !important; min-height: 0 !important; display: grid !important; grid-template-columns: 58mm 1fr; gap: 6mm; padding: 5mm 0; border-top: .3mm solid #D9D4CA; background: none !important; overflow: visible !important; break-inside: avoid; }
+.card__img { position: static !important; width: 100% !important; height: auto !important; aspect-ratio: 4 / 5; object-fit: cover; transform: none !important; }
+.card__text { position: static !important; translate: none !important; width: auto !important; padding: 0 !important; transform: none !important; }
+.card__satz { font-size: 17pt !important; margin: 2mm 0 3mm !important; }
+.card__text p { font-size: 9.5pt !important; }
+.card__no { font-size: 15pt; }
+
+/* Ζ Literatur: Zitate ohne Vollbild-Höhe, Dante als Bild + Text */
+.q { min-height: 0 !important; display: block !important; padding: 6mm 0 !important; break-inside: avoid; }
+.q__text { font-size: 20pt !important; line-height: 1.12; }
+.q__text .w, .dante__it .w { opacity: 1 !important; transform: none !important; }
+.q__de { font-size: 12pt; }
+.dante__pin { height: auto !important; display: grid !important; grid-template-columns: 50mm 1fr !important; gap: 6mm !important; padding: 5mm 0 !important; overflow: visible !important; align-items: start !important; break-inside: avoid; }
+.dante__fig { height: auto !important; overflow: visible !important; }
+.dante__fig img { height: auto !important; box-shadow: none !important; transform: none !important; }
+.dante__fig figcaption { position: static !important; padding: 1.5mm 0 0 !important; background: none !important; }
+.dante__hand { display: none !important; }
+.dante__it { font-size: 18pt !important; }
+.dante__dark { position: static !important; translate: none !important; width: auto !important; text-align: left; font-size: 12pt !important; margin-top: 4mm; opacity: 1 !important; }
+
+/* Η Kunst: Werkblätter untereinander, Vergleich nebeneinander */
+.werkblaetter { display: block; }
+.werkblatt { position: static !important; inset: auto !important; display: grid !important; grid-template-columns: 62mm 1fr !important; gap: 6mm !important; padding: 5mm 0 !important; border-top: .3mm solid #D9D4CA; opacity: 1 !important; transform: none !important; overflow: visible !important; background: none !important; break-inside: avoid; align-items: start !important; }
+.werkblatt[hidden] { display: grid !important; }
+.werkblatt__fig { height: auto !important; display: block !important; }
+.werkblatt__fig img { width: 100% !important; height: auto !important; max-height: 85mm; object-fit: contain; object-position: left top; }
+.werkblatt__title { font-size: 18pt !important; margin: 1.5mm 0 2.5mm !important; }
+.werkblatt__text h3 { margin-top: 2.5mm; font-size: 7.5pt; }
+.werkblatt__text p { font-size: 9.5pt !important; max-width: none; margin-top: 1mm; }
+.werkblatt__text, .werkblatt__fig { opacity: 1 !important; transform: none !important; }
+.swap { width: 100% !important; aspect-ratio: auto !important; display: grid !important; grid-template-columns: 1fr 1fr; gap: 4mm; overflow: visible !important; box-shadow: none !important; background: none !important; }
+.swap > .swap__img, .swap__top { position: static !important; clip-path: none !important; }
+.swap__img { position: static !important; width: 100% !important; height: auto !important; }
+.swap__line, .swap__range { display: none !important; }
+.swap__label { position: static !important; grid-row: 2; font-size: 7.5pt; }
+.swap__label--a { grid-column: 1; } .swap__label--b { grid-column: 2; }
+
+/* Θ Heute: Kacheln als Bild + Text */
+.tiles { grid-template-columns: 1fr 1fr !important; gap: 6mm 6mm !important; }
+.tile { aspect-ratio: auto !important; overflow: visible !important; background: none !important; break-inside: avoid; }
+.tile::after { display: none !important; }
+.tile__media { position: relative !important; inset: auto !important; aspect-ratio: 4 / 3; overflow: hidden; }
+.tile__media img { position: absolute !important; filter: none !important; transform: none !important; }
+.tile__body { position: static !important; margin-top: 2.5mm; }
+.tile__title { font-size: 15pt !important; }
+.tile__more { grid-template-rows: 1fr !important; opacity: 1 !important; }
+.tile__more p { font-size: 9pt !important; margin-top: 1.5mm; }
+
+/* Ω Fazit: Augen als Standbild, Abspann hell */
+.augen__pin { height: auto !important; background: none !important; overflow: visible !important; break-inside: avoid; }
+.augen__pin::after { display: none !important; }
+.augen__canvas { display: none !important; }
+.augen__still { display: block !important; width: 100%; max-height: 110mm; object-fit: cover; }
+.augen__text { position: static !important; opacity: 1 !important; transform: none !important; text-align: left; font-size: 18pt !important; padding: 0 !important; margin-top: 3mm; }
+.augen__cap { position: static !important; text-align: left; margin-top: 2mm; }
+.credits { padding: 10mm 0 0 !important; background: none !important; break-before: page; }
+.augen, .augen__pin { height: auto !important; min-height: 0 !important; }
+.augen__still { height: auto !important; aspect-ratio: 16 / 9; position: static !important; opacity: 1 !important; }
+.augen__text { display: block !important; visibility: visible !important; }
+.anmerkungen { break-inside: avoid; }

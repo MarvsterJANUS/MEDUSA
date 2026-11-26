@@ -16,3 +16,6 @@ desktop.ini
 
 # KI-Rohbilder und -videos (aufbereitete Fassungen liegen in medusa-website/media)
 ki-bilder/
+/tools/pdf-teile/
+/medusa-ausstellung.pdf
+/medusa-abgabe.zip

@@ -2,6 +2,8 @@ MEDUSA – digitale Ausstellung
 =============================
 
 Öffnen: Doppelklick auf index.html (funktioniert ohne Internet).
+Online: https://marvsterjanus.github.io/MEDUSA/
+PDF-Fassung: medusa-ausstellung.pdf (liegt neben diesem Ordner).
 Empfohlen: aktueller Chrome, Edge, Firefox oder Safari.
 
 Bedienung

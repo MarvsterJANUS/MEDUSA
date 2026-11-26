@@ -1,0 +1,54 @@
+/* PDF: Titel, Film, Inhaltsverzeichnis (wird von tools/pdf-export.js eingebunden) */
+@page { size: A4; margin: 20mm 20mm 22mm; }
+@page cover { margin: 0; }
+:root {
+  --ink: #141615; --muted: #686D69; --gold: #9A7A45; --line: #D9D4CA;
+  --f-display: "Big Shoulders Display", Impact, sans-serif;
+  --f-serif: "Instrument Serif", Georgia, serif;
+  --f-sans: "Manrope", system-ui, sans-serif;
+  --f-greek: "GFS Didot", Georgia, serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; color: var(--ink); font-family: var(--f-sans); font-size: 10.5pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+img { display: block; max-width: 100%; }
+.kicker { font-size: 7.5pt; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 4mm; }
+h2 { font-family: var(--f-serif); font-weight: 400; font-size: 34pt; line-height: 1.02; margin-bottom: 6mm; }
+
+/* Titel */
+.cover { page: cover; position: relative; width: 210mm; height: 297mm; overflow: hidden; background: #0D0F0E; color: #E8E4DC; break-after: page; }
+.cover__bild { position: absolute; inset: 0 0 auto 0; width: 100%; height: 205mm; object-fit: cover; object-position: 50% 30%; }
+.cover::after { content: ""; position: absolute; left: 0; right: 0; top: 120mm; height: 90mm; background: linear-gradient(180deg, rgba(13,15,14,0), #0D0F0E 85%); }
+.cover__text { position: absolute; z-index: 2; left: 18mm; right: 18mm; top: 158mm; }
+.cover__greek { font-family: var(--f-greek); font-size: 11pt; letter-spacing: .5em; color: #C9A46A; margin-bottom: 1mm; }
+.cover__word { font-family: var(--f-display); font-weight: 900; font-size: 112pt; line-height: .82; letter-spacing: .005em; margin-left: -1.2mm; color: #E8E4DC; }
+.cover__sub { font-size: 8pt; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; margin-top: 4mm; }
+.cover__frage { font-family: var(--f-serif); font-style: italic; font-size: 15pt; line-height: 1.25; max-width: 140mm; margin-top: 9mm; color: #E8E4DC; }
+.cover__fuss { position: absolute; z-index: 2; left: 18mm; right: 18mm; bottom: 16mm; display: flex; justify-content: space-between; align-items: flex-end; border-top: .3mm solid rgba(201,164,106,.45); padding-top: 5mm; }
+.cover__fuss p { display: grid; gap: 1mm; }
+.cover__label { font-size: 6.5pt; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #C9A46A; }
+.cover__label + .cover__label { margin-top: 3mm; }
+.cover__name { font-family: var(--f-serif); font-size: 18pt; line-height: 1.1; }
+.cover__url { text-align: right; font-size: 9pt; letter-spacing: .04em; }
+
+/* Film */
+.seite { break-after: page; }
+.film__intro { max-width: 150mm; color: #2E322F; margin-bottom: 8mm; }
+.film__reihe { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 7mm 6mm; }
+.film__reihe img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.film__nr { font-family: var(--f-display); font-weight: 700; font-size: 9pt; letter-spacing: .2em; color: var(--gold); margin-top: 2.5mm; }
+.film__t { font-family: var(--f-serif); font-size: 15pt; line-height: 1.15; margin-top: .5mm; }
+.film__z { font-size: 7.5pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 1.5mm; }
+.film__motto { margin-top: 11mm; padding-top: 7mm; border-top: .3mm solid var(--line); }
+.film__motto blockquote { font-family: var(--f-serif); font-style: italic; font-size: 19pt; line-height: 1.12; }
+.film__motto p { font-family: var(--f-serif); font-size: 11.5pt; margin-top: 2mm; color: #2E322F; }
+.film__motto figcaption { font-size: 7pt; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 2.5mm; }
+.film__ki { font-size: 7.5pt; color: var(--muted); margin-top: 6mm; }
+
+/* Inhalt */
+.toc h2 { margin-bottom: 9mm; }
+.toc__liste { list-style: none; border-top: .3mm solid var(--line); }
+.toc__liste li { display: grid; grid-template-columns: 14mm 1fr 12mm; align-items: baseline; padding: 4.2mm 0; border-bottom: .3mm solid var(--line); break-inside: avoid; }
+.toc__b { font-family: var(--f-greek); font-size: 20pt; color: var(--gold); line-height: 1; }
+.toc__t { font-family: var(--f-serif); font-size: 20pt; line-height: 1.05; }
+.toc__t small { display: block; font-family: var(--f-sans); font-size: 8.5pt; line-height: 1.45; color: var(--muted); margin-top: 1.5mm; }
+.toc__s { text-align: right; font-family: var(--f-sans); font-size: 10pt; font-weight: 600; color: var(--ink); }
