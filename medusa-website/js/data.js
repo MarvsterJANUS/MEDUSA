@@ -12,3 +12,7 @@ window.MEDUSA_SZENEN = [
   { id: 'heute',         b: 'Θ', t: 'Heute',         motiv: 'v-qualle',         teaser: 'Flagge, Mode, Tattoo, Qualle: Medusa ist nie verschwunden.', bild: 'heute' },
   { id: 'fazit',         b: 'Ω', t: 'Fazit',         motiv: 's9-augen',         teaser: 'Alles wandelt sich, nichts vergeht.', bild: 'fazit' }
 ];
+
+/* Name für „Ausstellung von …“ (Startseite unten + Abspann Ω Fazit).
+   Hier eintragen – solange [NAME] dasteht, wird die Zeile ausgeblendet. */
+window.MEDUSA_AUTOR = 'MRVSTR';

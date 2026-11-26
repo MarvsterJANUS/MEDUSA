@@ -483,7 +483,9 @@ html::after {
   display: flex; flex-wrap: wrap; gap: var(--s4) var(--s6); align-items: end; justify-content: space-between;
 }
 .namefield { display: grid; gap: 6px; min-width: min(100%, 360px); }
-.namefield label { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.namefield[hidden] { display: none; }
+.namefield__name { font-family: var(--f-serif); font-size: 30px; line-height: 1.2; color: var(--marmor); }
+.namefield label, .namefield__label { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
 .namefield input {
   font-family: var(--f-serif); font-size: 30px; color: var(--marmor);
   background: transparent; border: 0; border-bottom: 1px solid rgba(142,147,143,.5);
@@ -723,3 +725,22 @@ html.reduced-motion::before { display: none; }
 
 /* Die Hülle des fixierten Films liegt über dem Anfang der Kapitel-Liste – Klicks durchlassen */
 .pin-spacer:has(> .hero) { pointer-events: none; }
+
+/* Startseite: Schriftzug nicht beschneiden – Maske größer, Layout unverändert (Gegen-Margin) */
+.hero__word-mask { font-size: clamp(84px, 19.2vw, 365px); padding: .2em .1em .3em; margin: -.2em -.1em -.3em; }
+/* Motto oben rechts: Zitat in zwei Zeilen (Umbruch am „/“), Übersetzung in einer Zeile */
+@media (min-width: 901px) {
+  .hero__motto { max-width: none; }
+  .hero__motto blockquote, .hero__motto p { white-space: nowrap; }
+}
+/* Schriftzug MEDUSA: Box so groß wie die Buchstaben (sonst fehlt dem Verlauf oben/unten die Farbe),
+   kein Schattenfilter (wurde in Chrome als schwarzes Rechteck gezeichnet) */
+.hero__word { padding: .14em .06em .12em; margin: -.14em -.06em -.12em -.085em; font-size: 1em; filter: none; text-shadow: none; }
+@media (max-width: 900px) { .hero__word-mask { font-size: 23vw; } }
+/* Δ Schutzzeichen, Ε Deutungen: lange Zitate im Kopf breiter laufen lassen */
+body[data-szene="schutzzeichen"] .scene-title .motto,
+body[data-szene="deutungen"] .scene-title .motto { max-width: min(1080px, 100%); }
+body[data-szene="heute"] .scene-title .motto { max-width: min(1200px, 100%); }
+/* Η Kunst: Zitat in zwei Zeilen, Übersetzung in einer Zeile */
+body[data-szene="kunst"] .scene-title .motto { max-width: none; }
+@media (min-width: 901px) { body[data-szene="kunst"] .scene-title .motto__de { white-space: nowrap; } }

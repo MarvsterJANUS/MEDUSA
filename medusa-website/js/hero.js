@@ -384,7 +384,7 @@
     }
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.fromTo(canvas, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 2.4, ease: 'power2.out' }, 0)
-      .fromTo(wordEl, { yPercent: 105 }, { yPercent: 0, duration: 1.7, ease: 'power4.out' }, 0.35)
+      .fromTo(wordEl, { yPercent: 130 }, { yPercent: 0, duration: 1.7, ease: 'power4.out' }, 0.35)
       .fromTo(stage.querySelector('.hero__greek'), { opacity: 0, letterSpacing: '1.2em' }, { opacity: 1, letterSpacing: '.5em', duration: 2 }, 0.6)
       .fromTo(stage.querySelector('.hero__sub'), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.2 }, 0.95)
       .fromTo(stage.querySelectorAll('.hero__motto > *'), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1.2, stagger: 0.12 }, 1.1)
@@ -511,7 +511,7 @@
     gsap.set([header.querySelector('.scene-indicator'), header.querySelector('.menu-btn')], { autoAlpha: 0 });
     if (M.snake) gsap.set(M.snake, { autoAlpha: 0 });
     gsap.set(canvas, { opacity: 0 });
-    gsap.set(wordEl, { yPercent: 105 });
+    gsap.set(wordEl, { yPercent: 130 });
     gsap.set([stage.querySelector('.hero__greek'), stage.querySelector('.hero__sub'), stage.querySelector('.hero__hint')].concat(Array.from(stage.querySelectorAll('.hero__motto > *'))), { opacity: 0 });
 
     makeSprite();

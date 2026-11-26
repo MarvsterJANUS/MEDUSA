@@ -488,12 +488,14 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   }
 
-  /* ---------- Namensfeld (bleibt nur im eigenen Browser gespeichert) ---------- */
+  /* ---------- „Ausstellung von …“: Name aus js/data.js (MEDUSA_AUTOR) ---------- */
   function initNameField() {
-    const input = document.querySelector('#namensfeld');
-    if (!input) return;
-    try { input.value = localStorage.getItem('medusa-name') || ''; } catch (e) { /* egal */ }
-    input.addEventListener('input', () => { try { localStorage.setItem('medusa-name', input.value); } catch (e) { /* egal */ } });
+    const name = String(window.MEDUSA_AUTOR || '').trim();
+    const ok = name && name !== '[NAME]';
+    document.querySelectorAll('[data-autor]').forEach((el) => {
+      if (ok) el.textContent = name;
+      else el.closest('.namefield').hidden = true;
+    });
   }
 
   /* ---------- Start ---------- */
